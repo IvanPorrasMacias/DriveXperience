@@ -134,3 +134,11 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',  # Solo renderizar JSON
     ),
 }
+
+# Define la carpeta donde se almacenan los archivos estáticos
+STATIC_URL = '/static/'
+
+# Si tienes archivos estáticos específicos de tu aplicación, define esta variable
+STATICFILES_DIRS = [
+    BASE_DIR / "static"
+]
