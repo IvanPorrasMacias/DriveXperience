@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catalogo</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/cssPortafolio.css" />
+  </head>
+
+  <body>
+    <nav class="topnav">
+      <a class="home-nav" href="indexCar.html">(LOGO)</a>
+      <a class="bar-nav" href="login.html">Inicio de sesión</a>
+      <a class="bar-nav" href="Cotizador.html">Cotizador</a>
+      <a class="bar-nav" href="#">Contacto</a>
+    </nav>
+    <h1 style="text-align: center">Nuestro Catálogo</h1>
+    <section>
+      <div class="row">
+        <div class="column">
+          <div class="content">
+            <img id="carImage1" src="image/acura.png" style="width: 100%" />
+            <h4>Acura</h4>
+            <p><b>Precio:</b> <span id="carPrice1">440,000</span></p>
+            <p><b>Año:</b> <span id="carYear1">2022</span></p>
+            <button class="btn" onclick="redirectToPage(1)">Adquirir</button>
+          </div>
+        </div>
+        <!-- Repite el bloque para otros autos cambiando el ID -->
+        <div class="column">
+          <div class="content">
+            <img id="carImage2" src="image/acura.png" style="width: 100%" />
+            <h4>Acura</h4>
+            <p><b>Precio:</b> <span id="carPrice2">410,000</span></p>
+            <p><b>Año:</b> <span id="carYear2">2022</span></p>
+            <button class="btn" onclick="redirectToPage(2)">Adquirir</button>
+          </div>
+        </div>
+        <div class="column">
+          <div class="content">
+            <img id="carImage3" src="image/acura.png" style="width: 100%" />
+            <h4>Acura</h4>
+            <p><b>Precio:</b> <span id="carPrice3">320,000</span></p>
+            <p><b>Año:</b> <span id="carYear3">2021</span></p>
+            <button class="btn" onclick="redirectToPage(3)">Adquirir</button>
+          </div>
+        </div>
+        <div class="column">
+          <div class="content">
+            <img id="carImage4" src="image/acura.png" style="width: 100%" />
+            <h4>Acura</h4>
+            <p><b>Precio:</b> <span id="carPrice4">250,000</span></p>
+            <p><b>Año:</b> <span id="carYear4">2022</span></p>
+            <button class="btn" onclick="redirectToPage(4)">Adquirir</button>
+          </div>
+        </div>
+        <div class="column">
+          <div class="content">
+            <img id="carImage5" src="image/acura.png" style="width: 100%" />
+            <h4>Acura</h4>
+            <p><b>Precio:</b> <span id="carPrice5">340,000</span></p>
+            <p><b>Año:</b> <span id="carYear5">2023</span></p>
+            <button class="btn" onclick="redirectToPage(5)">Adquirir</button>
+          </div>
+        </div><div class="column">
+          <div class="content">
+            <img id="carImage6" src="image/acura.png" style="width: 100%" />
+            <h4>Acura</h4>
+            <p><b>Precio:</b> <span id="carPrice6">890,000</span></p>
+            <p><b>Año:</b> <span id="carYear6">2024</span></p>
+            <button class="btn" onclick="redirectToPage(6)">Adquirir</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function redirectToPage(carIndex) {
+        const imageSrc = document.getElementById(`carImage${carIndex}`).src;
+        const price = document.getElementById(`carPrice${carIndex}`).innerText;
+        const year = document.getElementById(`carYear${carIndex}`).innerText;
+
+        // Almacena la información en localStorage
+        localStorage.setItem("carImage", imageSrc);
+        localStorage.setItem("carPrice", price);
+        localStorage.setItem("carYear", year);
+
+        // Abre la nueva pestaña
+        window.open("Cotizador.html", "_blank");
+      }
+    </script>
+  </body>
+</html>

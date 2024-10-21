@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DriveXperience</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="js/slide.js" />
+  </head>
+  <body class="body">
+    <nav class="topnav">
+      <a class="home-nav" href="indexCar.html">(LOGO)</a>
+      <a class="bar-nav" href="login.html">Inicio de sesión</a>
+      <a class="bar-nav" href="CatalogoAutos.html">Catalogo</a>
+      <a class="bar-nav" href="#">Contacto</a>
+    </nav>
+    <section>
+      <div class="main-image">
+        <div class="main-image-text">
+          <p>Bienvenido</p>
+          <h1 style="font-size: 50px">DriveXperience</h1>
+          <p>Agencia de autos</p>
+          <button>Catalogo</button>
+        </div>
+      </div>
+      <div class="slideshow-container">
+        <div class="mySlides fade">
+          <img src="image/cam-azul.png" style="width: 100%" />
+          <div class="text">AUTO 1</div>
+        </div>
+
+        <div class="mySlides fade">
+          <img src="image/acura.png" style="width: 100%" />
+          <div class="text">AUTO 2</div>
+        </div>
+
+        <div class="mySlides fade">
+          <img src="image/camioneta.png" style="width: 100%" />
+          <div class="text">AUTO 3</div>
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+      </div>
+      <br />
+
+      <div style="text-align: center">
+        <span class="indicators" onclick="currentSlide(1)"></span>
+        <span class="indicators" onclick="currentSlide(2)"></span>
+        <span class="indicators" onclick="currentSlide(3)"></span>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p class="c">CONTACTANOS</p>
+      <p>
+        Correo Electronico:
+        <a href="http://gmail.com">driverXperence@gmail.com</a>
+      </p>
+    </footer>
+
+    <script>
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = slides.length;
+        }
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cotizador</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/cotizador.css" />
+  </head>
+  <body class="body">
+    <nav class="topnav">
+      <a class="home-nav" href="indexCar.html">(LOGO)</a>
+      <a class="bar-nav" href="login.html">Inicio de sesión</a>
+      <a class="bar-nav" href="CatalogoAutos.html">Catalogo</a>
+      <a class="bar-nav" href="#">Contacto</a>
+    </nav>
+    <br />
+    <h2 style="text-align: center">COTIZADOR</h2>
+
+    <div class="car-container">
+      <h2>Detalles del Auto</h2>
+      <img id="carImage" style="width: 30%" />
+      <p><b>Precio:</b> <span id="carPrice"></span></p>
+      <p><b>Año:</b> <span id="carYear"></span></p>
+    </div>
+    
+
+    <div class="container">
+      <div class="left-column">
+        <h2>Configura tu crédito</h2>
+        <p>Enganche mínimo de $70,000</p>
+        <div class="Form">
+          <form id="formEnganche">
+            <label for="enganche">Enganche</label>
+            <input
+              type="text"
+              id="enganche"
+              name="enganche"
+              placeholder="Ingrese el enganche deseado"
+            />
+
+            <label for="plazoSelect">Mensualidades</label>
+            <select id="plazoSelect" name="plazo">
+              <option value="24meses">24 MESES</option>
+              <option value="36meses">36 MESES</option>
+              <option value="48meses">48 MESES</option>
+            </select>
+
+            <label for="aseguradora">Aseguradora</label>
+            <select name="aseguradora" id="aseguradora">
+              <option value="qualitas">QUALITAS: $14,000</option>
+              <option value="gnp">GNP: $12,000</option>
+            </select>
+
+            <input type="submit" value="Generar" />
+          </form>
+        </div>
+      </div>
+      <div class="right-column">
+        <div class="nav">
+          <p class="text-nav-right-column">
+            <span>MENSUALIDAD:</span>
+            <span></span>
+          </p>
+        </div>
+        <h3><b>RESUMEN DE COTIZADOR</b></h3>
+        <p class="text-bold-right-column">
+          <span class="label"><b>MONTO A FINANCIAR</b>:</span>
+          <span class="result" id="montoFinanciar"></span>
+        </p>
+        <hr />
+        <p class="text-bold-right-column">
+          <span class="label"><b>PAGO INICIAL</b>: </span>
+          <span class="result" id="pagoInicial">-</span>
+        </p>
+        <p class="text-right-column">
+          <span class="label">Comisión por apertura:</span>
+          <span class="result" id="comisionApertura">-</span>
+        </p>
+        <p class="text-right-column">
+          <span class="label">Seguro de contado: </span>
+          <span class="result" id="seguroContado">-</span>
+        </p>
+        <hr />
+        <p class="text-right-column">
+          <span class="label">Tasa de interés:</span>
+          <span class="result" id="tasaInteres">-</span>
+        </p>
+        <p class="text-right-column">
+          <span class="label">Plazo:</span>
+          <span class="result" id="plazoLabel">-</span>
+        </p>
+      </div>
+    </div>
+
+    <script>
+
+      // Recupera la información de localStorage
+      document.getElementById("carImage").src =
+        localStorage.getItem("carImage");
+      document.getElementById("carPrice").innerText =
+        localStorage.getItem("carPrice");
+      document.getElementById("carYear").innerText =
+        localStorage.getItem("carYear");
+    </script>
+  </body>
+</html>
