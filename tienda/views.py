@@ -16,7 +16,7 @@ class VehículoViewSet(viewsets.ModelViewSet):
     serializer_class = VehículoSerializer
 
 def IndexView(request):
-    return render(request,'home.html')
+    return render(request,'indexCar.html')
 
 def LoginView(request):
     return render(request,'login.html')

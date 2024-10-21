@@ -10,7 +10,7 @@ router.register(r'vehiculos', VehículoViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
-    path('index/', views.IndexView),
+    path('indexCar/', views.IndexView),
     path('login/', views.LoginView, name='login'),
     path('registro/',views.RegistroView),
     path('cotizador/',views.CotizadorView)
