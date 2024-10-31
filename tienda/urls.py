@@ -14,4 +14,5 @@ urlpatterns = [
     path('login/', views.LoginView, name='login'),
     path('registro/',views.RegistroView),
     path('cotizador/',views.CotizadorView)
+    #path('catalogo/')
 ]
