@@ -6,13 +6,13 @@
     <title>DriveXperience</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
-    <link rel="stylesheet" type="text/js" href="js/slide.js" />
+    <link rel="script" type="text/js" href="{% static 'js/slide.js' %}" />
   </head>
   <body class="body">
     <nav class="topnav">
-      <a class="home-nav" href="indexCar.html">(LOGO)</a>
-      <a class="bar-nav" href="login.html">Inicio de sesión</a>
-      <a class="bar-nav" href="CatalogoAutos.html">Catalogo</a>
+      <a class="home-nav" href="{% url 'indexCar' %}">(LOGO)</a>
+      <a class="bar-nav" href="{% url 'login' %}">Inicio de sesión</a>
+      <a class="bar-nav" href="{% url 'catalogo' %}">Catalogo</a>
       <a class="bar-nav" href="#">Contacto</a>
     </nav>
     <section>
@@ -25,18 +25,19 @@
         </div>
       </div>
       <div class="slideshow-container">
+        {% load static %}
         <div class="mySlides fade">
-          <img src="image/cam-azul.png" style="width: 100%" />
+          <img src="{% static 'image/cam-azul.png' %}" style="width: 100%" />
           <div class="text">AUTO 1</div>
         </div>
 
         <div class="mySlides fade">
-          <img src="image/acura.png" style="width: 100%" />
+          <img src="{% static 'image/acura.png' %}" style="width: 100%" />
           <div class="text">AUTO 2</div>
         </div>
 
         <div class="mySlides fade">
-          <img src="image/camioneta.png" style="width: 100%" />
+          <img src="{% static 'image/camioneta.png' %}" style="width: 100%" />
           <div class="text">AUTO 3</div>
         </div>
 

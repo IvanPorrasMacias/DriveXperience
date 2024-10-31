@@ -26,3 +26,6 @@ def RegistroView(request):
 
 def CotizadorView(request):
     return render(request, 'cotizador.html')
+
+def CatalogoView(request):
+    return render(request, 'CatalogoAutos.html')
