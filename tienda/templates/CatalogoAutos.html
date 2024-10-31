@@ -11,9 +11,9 @@
 
   <body>
     <nav class="topnav">
-      <a class="home-nav" href="indexCar.html">(LOGO)</a>
-      <a class="bar-nav" href="login.html">Inicio de sesión</a>
-      <a class="bar-nav" href="Cotizador.html">Cotizador</a>
+      <a class="home-nav" href="{% url 'indexCar' %}">(LOGO)</a>
+      <a class="bar-nav" href="{% url 'login' %}">Inicio de sesión</a>
+      <a class="bar-nav" href="{% url 'cotizador' %}">Cotizador</a>
       <a class="bar-nav" href="#">Contacto</a>
     </nav>
     <h1 style="text-align: center">Nuestro Catálogo</h1>
