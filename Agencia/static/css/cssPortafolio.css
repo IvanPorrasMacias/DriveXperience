@@ -1,0 +1,45 @@
+
+/* Center website */
+.main {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.row { /*fila*/
+  margin: 10px -16px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/*Crea cuatro columnas iguales que floten una al lado de la otra.*/
+.column {
+  float: left;
+  width: 25%;
+}
+
+
+/* Content */
+.content {
+  background-color: white;
+  padding: 10px;
+}
+
+/* Estilo de los botones */
+.btn {
+  border: none;
+  outline: none;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: lightgray;
+  color: black;
+}
+
+.btn.active {
+  background-color: #666;
+  color: white;
+}
