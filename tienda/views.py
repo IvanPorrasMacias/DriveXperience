@@ -28,4 +28,5 @@ def CotizadorView(request):
     return render(request, 'cotizador.html')
 
 def CatalogoView(request):
-    return render(request, 'CatalogoAutos.html')
+    vehículos = Vehículo.objects.all()
+    return render(request, 'CatalogoAutos.html', {'vehículos': vehículos})
