@@ -142,4 +142,8 @@ STATICFILES_DIRS = [
     BASE_DIR / "Agencia/static/"
 ]
 
+# Definimos la carpeta Media Files
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
 AUTH_USER_MODEL = "tienda.Usuario"
