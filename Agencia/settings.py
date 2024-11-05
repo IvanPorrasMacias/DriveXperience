@@ -109,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'UTC'
 
@@ -141,3 +141,5 @@ REST_FRAMEWORK = {
 STATICFILES_DIRS = [
     BASE_DIR / "Agencia/static/"
 ]
+
+AUTH_USER_MODEL = "tienda.Usuario"

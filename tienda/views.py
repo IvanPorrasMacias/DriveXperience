@@ -5,7 +5,7 @@ from rest_framework import viewsets
 
 from .models import Usuario,Vehículo
 from .serializers import UsuarioSerializer,VehículoSerializer
-from .forms import RegistroForm
+#from .forms import RegistroForm
 
 class UsuarioViewSet(viewsets.ModelViewSet):
     queryset = Usuario.objects.all()

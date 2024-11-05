@@ -1,20 +1,17 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
-class Usuario(models.Model):
-    nombre = models.CharField(max_length=30)
-    apellidos = models.CharField(max_length=50)
+class Usuario(AbstractUser):
     direccion = models.CharField(max_length=100)
     teléfono = models.CharField(max_length=20)
     RFC = models.CharField(max_length=13)
-    usuario = models.CharField(max_length=20)
-    contraseña = models.CharField(max_length=20)
 
     def save(self, *args, **kwargs):
-        self.usuario = (self.nombre[:3] + self.apellidos[:3] + self.teléfono[-3:]).lower()
+        self.username = (self.first_name[:3] + self.last_name[:3] + self.teléfono[-3:]).lower()
         super(Usuario, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.usuario
+        return self.username
 
 class Vehículo(models.Model):
     marca = models.CharField(max_length=30)
