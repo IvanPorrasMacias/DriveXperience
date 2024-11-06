@@ -12,7 +12,7 @@
     <nav class="topnav">
       <a class="home-nav" href="{% url 'indexCar' %}">(LOGO)</a>
       {% if request.user.is_authenticated %}
-        <a class="bar-nav">Cerrar Sesión</a>
+        <a class="bar-nav" href="{% url 'exit' %}">Cerrar Sesión</a>
       {% else %}
         <a class="bar-nav" href="{% url 'login' %}">Inicio de sesión</a>
       {% endif %}
