@@ -12,6 +12,7 @@ body {
 
 .container {
     display: flex; /* Utiliza flexbox para crear columnas */
+    background-color: white;
 }
 
 .left-column, .right-column {
@@ -20,6 +21,7 @@ body {
 }
 
 .left-column {
+    color: black;
     background-color: white; /* Color de fondo de la columna izquierda */
 }
 .Form{
@@ -27,6 +29,7 @@ body {
 }
 
 .right-column {
+    color: black;
     background-color: #eaeaea; /* Color de fondo de la columna derecha */
 }
 .right-column .nav {
@@ -61,6 +64,7 @@ body {
     font-weight: bold;
 }
 .text-right-column{
+    color: black;
     display: flex; /* Usar flexbox para alinear elementos */
     justify-content: space-between; /* Espacio entre elementos */
     align-items: center; /* Centra verticalmente los elementos */
