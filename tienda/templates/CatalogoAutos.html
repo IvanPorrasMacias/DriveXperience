@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Catalogo</title>
+    <title>Catálogo</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/cssPortafolio.css' %}" />
@@ -21,6 +21,106 @@
       <a class="bar-nav" href="#">Contacto</a>
     </nav>
     <h1 style="text-align: center">Nuestro Catálogo</h1>
+
+    <section style="background-color: white;">
+      <div class="row">
+        
+        {% for vehículos in vehículos %}
+        <div class="column">
+          <div class="content">
+            <img id="carImage1" src="image/auto1.png" style="width: 100%" />
+            <h4>Acura</h4>
+            <p><b>Precio:</b> <span id="carPrice1">440,000</span></p>
+            <p><b>Año:</b> <span id="carYear1">2022</span></p>
+            <button class="btn" onclick="redirectToPage(1)">Adquirir</button>
+          </div>
+        </div>
+        <!-- Repite el bloque para otros autos cambiando el ID -->
+        <div class="column">
+          <div class="content">
+            <img id="carImage2" src="image/auto2.png" style="width: 100%" />
+            <h4>Acura</h4>
+            <p><b>Precio:</b> <span id="carPrice2">410,000</span></p>
+            <p><b>Año:</b> <span id="carYear2">2022</span></p>
+            <button class="btn" onclick="redirectToPage(2)">Adquirir</button>
+          </div>
+        </div>
+        <div class="column">
+          <div class="content">
+            <img id="carImage3" src="image/auto3.png" style="width: 100%" />
+            <h4>Acura</h4>
+            <p><b>Precio:</b> <span id="carPrice3">320,000</span></p>
+            <p><b>Año:</b> <span id="carYear3">2021</span></p>
+            <button class="btn" onclick="redirectToPage(3)">Adquirir</button>
+          </div>
+        </div>
+        <div class="column">
+          <div class="content">
+            <img id="carImage4" src="image/auto1.png" style="width: 100%" />
+            <h4>Acura</h4>
+            <p><b>Precio:</b> <span id="carPrice4">250,000</span></p>
+            <p><b>Año:</b> <span id="carYear4">2022</span></p>
+            <button class="btn" onclick="redirectToPage(4)">Adquirir</button>
+          </div>
+        </div>
+        <br>
+        <div class="column">
+          <div class="content">
+            <img id="carImage5" src="image/auto2.png" style="width: 100%" />
+            <h4>Acura</h4>
+            <p><b>Precio:</b> <span id="carPrice5">340,000</span></p>
+            <p><b>Año:</b> <span id="carYear5">2023</span></p>
+            <button class="btn" onclick="redirectToPage(5)">Adquirir</button>
+          </div>
+        </div><div class="column">
+          <div class="content">
+            <img id="carImage6" src="image/auto3.png" style="width: 100%" />
+            <h4>Acura</h4>
+            <p><b>Precio:</b> <span id="carPrice6">890,000</span></p>
+            <p><b>Año:</b> <span id="carYear6">2024</span></p>
+            <button class="btn" onclick="redirectToPage(6)">Adquirir</button>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </section>
+    <footer class="footer" id="footer">
+      <h2>CONTACTANOS:</h2>
+  
+      <div class="container-contactanos">
+        <div class="container-contactanos-left">
+          <h2>Correo Electrónico:</h2>
+          <p>
+            <a style="color: white" href="http://gmail.com">driverXperence@gmail.com</a>
+          </p>
+        </div>
+        <div class="container-contactanos-midle">
+          <h2>Nuestras Redes Sociales:</h2>
+          <img style="width: 130px; padding-left: 50px" src="image/icon-redes.jpg " alt="" />
+        </div>
+        <div class="container-contactanos-right">
+          <h2>Teléfonos:</h2>
+          <p>(477) 333-3333</p>
+          <p>(477) 333-3333</p>
+          <p>(477) 333-3333</p>
+        </div>
+      </div>
+  
+      <hr />
+      <h2>Derechos Reservados</h2>
+      <p>
+        El contenido de este sitio web está protegido por las leyes de derechos
+        de autor. Queda prohibida su reproducción sin autorización previa.
+        DriveXperience se reserva el derecho de modificar la información en
+        cualquier momento. Para más detalles, contáctenos.
+      </p>
+    </footer>
+
+
+
+
+
+
     <section>
       <div class="row">
         {% for vehículos in vehículos %}
@@ -39,9 +139,10 @@
 
     <script>
       function redirectToPage(carId) {
-        const imageSrc = document.getElementById(`carImage${carId}`).src;
-        const price = document.getElementById(`carPrice${carId}`).innerText;
-        //const year = document.getElementById(`carYear${carId}`).innerText;
+        function redirectToPage(carIndex) {
+        const imageSrc = document.getElementById(`carImage${carIndex}`).src;
+        const price = document.getElementById(`carPrice${carIndex}`).innerText;
+        //const year = document.getElementById(`carYear${carIndex}`).innerText;
 
         // Almacena la información en localStorage
         localStorage.setItem("carImage", imageSrc);
@@ -49,7 +150,8 @@
         //localStorage.setItem("carYear", year);
 
         // Abre la nueva pestaña
-        window.open("{% url 'cotizador' %}?carId=" + carId, "_blank");
+        window.open("Cotizador.html", "_blank");
+      }
       }
     </script>
   </body>
