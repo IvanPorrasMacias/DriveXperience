@@ -1,105 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DriveXperience</title>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DriveXperience</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+  <link rel="script" type="text/js" href="{% static 'js/slide.js' %}" />
+</head>
+
+<body class="body">
+  <nav class="topnav">
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
-    <link rel="script" type="text/js" href="{% static 'js/slide.js' %}" />
-  </head>
-  <body class="body">
-    <nav class="topnav">
-      {% load static %}
-      <a class="home-nav" href="{% url 'indexCar' %}"><img src="{% static 'image/logo.jpg' %}" alt="logo" /></a>
-      {% if request.user.is_authenticated %}
-        <a class="bar-nav" href="{% url 'exit' %}">Cerrar Sesión</a>
-      {% else %}
-        <a class="bar-nav" href="{% url 'login' %}">Inicio de sesión</a>
-      {% endif %}
-      <a class="bar-nav" href="{% url 'catalogo' %}">Catalogo</a>
-      <a class="bar-nav" href="#">Contacto</a>
-      {% if request.user.is_authenticated %}
-        <a class="bar-nav">Bienvenido, {{ user.username }}</a>
-      {% endif %}
-    </nav>
-    <section>
-      <div class="main-image">
-        <div class="main-image-text">
-          <p>Bienvenido</p>
-          <h1 style="font-size: 50px">DriveXperience</h1>
-          <p>Agencia de autos</p>
-          <button>Catalogo</button>
+    <a class="home-nav" href="{% url 'indexCar' %}"><img src="{% static 'image/logo.jpg' %}" alt="logo" /></a>
+    {% if request.user.is_authenticated %}
+    <a class="bar-nav" href="{% url 'exit' %}">CERRAR SESIÓN</a>
+    {% else %}
+    <a class="bar-nav" href="{% url 'login' %}">INICIO DE SESIÓN</a>
+    {% endif %}
+    <a class="bar-nav" href="{% url 'catalogo' %}">VEHÍCULOS</a>
+    <a class="bar-nav" href="#">CONTACTO</a>
+    {% if request.user.is_authenticated %}
+    <a class="bar-nav">Bienvenido, {{ user.username }}</a>
+    {% endif %}
+  </nav>
+  <section>
+    <div class="main-image"></div>
+      <div class="row">
+        <div class="container">
+          {% load static %}
+          <div class="image-wrapper">
+            <a href="CatalogoAutos.html">
+              <img src="{% static 'image/image-financiamiento.jpg' %}" alt="Img-Financieminto" class="image"
+                id="image-financiamiento" />
+              <div class="overlay">
+                <p>¡REALIZAR SIMULACIÓN!</p>
+              </div>
+            </a>
+          </div>
+          <div class="image-wrapper">
+            <a href="login.html">
+              <img src="{% static 'image/image-servicio' %}" alt="Img-Servicio" class="image" id="image-servicio" />
+              <div class="overlay">
+                <p>¡AGENDAR CITA!</p>
+              </div>
+            </a>
+          </div>
+          <div class="image-wrapper">
+            <a href="login.html">
+              <img src="{% static 'image/image-prueba' %}" alt="Img-Promociones" class="image" id="image-prueba" />
+              <div class="overlay">
+                <p>¡AGENDAR CITA!</p>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
-      <div class="slideshow-container">
-        {% load static %}
-        <div class="mySlides fade">
-          <img src="{% static 'image/cam-azul.png' %}" style="width: 100%" />
-          <div class="text">AUTO 1</div>
-        </div>
-
-        <div class="mySlides fade">
-          <img src="{% static 'image/acura.png' %}" style="width: 100%" />
-          <div class="text">AUTO 2</div>
-        </div>
-
-        <div class="mySlides fade">
-          <img src="{% static 'image/camioneta.png' %}" style="width: 100%" />
-          <div class="text">AUTO 3</div>
-        </div>
-
-        <a class="prev" onclick="plusSlides(-1)">❮</a>
-        <a class="next" onclick="plusSlides(1)">❯</a>
+      <div class="we-are">
+        <h1>DriveXperience</h1>
+        <h2>Agencia de Autos Seminuevos, León GTO</h2>
+        <p>
+          Este es el sitio web oficial de la Agencia Seminuevos DriveXperience.
+          Aquí puedes encontrar toda la información sobre los modelos de autos
+          seminuevos que tenemos disponibles, nuestra área de servicio
+          automotriz, horarios de atención, métodos de contacto y promociones
+          vigentes.
+        </p>
       </div>
-      <br />
-
-      <div style="text-align: center">
-        <span class="indicators" onclick="currentSlide(1)"></span>
-        <span class="indicators" onclick="currentSlide(2)"></span>
-        <span class="indicators" onclick="currentSlide(3)"></span>
+      <div class="img-index-midle"></div>
+      <br /><br />
+      <div class="container-schedule">
+        <div class="schedule">
+          <h2>¡ESTAMOS LISTOS PARA RECIBIRTE!</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Día</th>
+                <th>Horario de Atención</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Lunes</td>
+                <td>9:00 AM - 7:00 PM</td>
+              </tr>
+              <tr>
+                <td>Martes</td>
+                <td>9:00 AM - 7:00 PM</td>
+              </tr>
+              <tr>
+                <td>Miércoles</td>
+                <td>9:00 AM - 7:00 PM</td>
+              </tr>
+              <tr>
+                <td>Jueves</td>
+                <td>9:00 AM - 7:00 PM</td>
+              </tr>
+              <tr>
+                <td>Viernes</td>
+                <td>9:00 AM - 7:00 PM</td>
+              </tr>
+              <tr>
+                <td>Sábado</td>
+                <td>10:00 AM - 4:00 PM</td>
+              </tr>
+              <tr>
+                <td>Domingo</td>
+                <td>10:00 AM - 4:00 PM</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </section>
+  </section>
 
-    <footer class="footer">
-      <p class="c">CONTACTANOS</p>
-      <p>
-        Correo Electronico:
-        <a href="http://gmail.com">driverXperence@gmail.com</a>
-      </p>
-    </footer>
+  <footer class="footer" id="footer">
+    <h2>CONTACTANOS:</h2>
+    <div class="container-contactanos">
+      <div class="container-contactanos-left">
+        <h2>Correo Electrónico:</h2>
+        <p>
+          <a style="color: white" href="http://gmail.com">driverXperence@gmail.com</a>
+        </p>
+      </div>
+      <div class="container-contactanos-midle">
+        <h2>Nuestras Redes Sociales:</h2>
+        <img style="width: 130px; padding-left: 50px" src="image/icon-redes.jpg " alt="" />
+      </div>
+      <div class="container-contactanos-right">
+        <h2>Teléfonos:</h2>
+        <p>(477) 333-3333</p>
+        <p>(477) 333-3333</p>
+        <p>(477) 333-3333</p>
+      </div>
+    </div>
+    <hr />
+    <h2>Derechos Reservados</h2>
+    <p>
+      El contenido de este sitio web está protegido por las leyes de derechos
+      de autor. Queda prohibida su reproducción sin autorización previa.
+      DriveXperience se reserva el derecho de modificar la información en
+      cualquier momento. Para más detalles, contáctenos.
+    </p>
+  </footer>
 
-    <script>
-      let slideIndex = 1;
-      showSlides(slideIndex);
+</body>
 
-      function plusSlides(n) {
-        showSlides((slideIndex += n));
-      }
-
-      function currentSlide(n) {
-        showSlides((slideIndex = n));
-      }
-
-      function showSlides(n) {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-        let dots = document.getElementsByClassName("dot");
-        if (n > slides.length) {
-          slideIndex = 1;
-        }
-        if (n < 1) {
-          slideIndex = slides.length;
-        }
-        for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-        }
-        for (i = 0; i < dots.length; i++) {
-          dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-      }
-    </script>
-  </body>
 </html>
