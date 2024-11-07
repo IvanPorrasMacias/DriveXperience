@@ -26,11 +26,11 @@ def LoginView(request):
 def RegistroView(request):
     return render(request,'registro.html')
 
-@login_required
+#@login_required
 def CotizadorView(request):
     return render(request, 'cotizador.html')
 
-@login_required
+#@login_required
 def CatalogoView(request):
     vehículos = Vehículo.objects.all()
     return render(request, 'CatalogoAutos.html', {'vehículos': vehículos})
