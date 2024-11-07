@@ -33,6 +33,8 @@ ALLOWED_HOSTS = ['4ac5-177-229-64-125.ngrok-free.app',
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_forms',
+    'crispy_bootstrap5',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,6 +45,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders'
 ]
+
+# Variables globales para crispy
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

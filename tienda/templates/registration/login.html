@@ -20,6 +20,7 @@
     </nav>
     <div class="section">
       <div class="contenedor-form">
+        {% load crispy_forms_tags %}
         <div class="toggle">
           <span> Crear Cuenta</span>
         </div>
@@ -27,8 +28,7 @@
           <form action="" method="post">
           {% csrf_token %}
           <h2>Iniciar Sesión</h2>
-          <input type="text" name="username" placeholder="Usuario" required />
-          <input type="password" name="password" placeholder="Contraseña" required />
+          {{ form | crispy}}
           <button type="submit">Iniciar Sesión</button>
           </form>
         </div>
