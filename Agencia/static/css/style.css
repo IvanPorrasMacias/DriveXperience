@@ -2,6 +2,9 @@ body, html {
   height: 100%;
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+  scroll-behavior: smooth;
+
 }
 .topnav {
     background-color: black;
@@ -9,14 +12,18 @@ body, html {
   }
   
   .home-nav {
+    flex: auto;
     float: left;
-    background-color: #04AA6D;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 15px;
   }
+  .home-nav img {
+    height: 40px; /* Ajusta la altura de la imagen */
+    width: auto; /* Mantiene la proporción */
+}
   .bar-nav {
     float: right;
     color: white;
@@ -24,112 +31,21 @@ body, html {
     padding: 15px 16px;
     text-decoration: none;
     font-size: 12px;
+    margin-top: 10px;
+    font-size: 15px;
   }
+  .bar-nav:hover {
+    text-decoration: underline; /* Subraya el texto al pasar el mouse */
+}
+
   
 /******************************************/
-
 .main-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../image/auto.jpg");
-  height: 500px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-}
-
-.main-image-text {
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-}
-
-.main-text button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 10px 50px;
-  color: black;
-  background-color: #ddd;
-  text-align: center;
-  cursor: pointer;
-}
-
-
-/********************************/
-
-/* Contenedor Slideshow */
-.slideshow-container {
-  max-width: 800px;
-  position: relative;
-  margin: auto;
-}
-
-/* Botones de antes y despues */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
-  color: black;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Posiciona el botón de siguiente a la derecha */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* Texto debajo de la imagen*/
-.text {
-  color: black;
-  font-size: 15px;
-  position: absolute;
-  bottom: 8px;
+  background-image:url("../image/img-principal.jpg");
   width: 100%;
-  text-align: center;
+  height: 700px;
 }
 
-/* Puntos indicadores debajo de las imagenes */
-.indicators {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active, .indicators:hover {
-  background-color: gray;
-}
-
-/* Fading animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
-}
 /****************MEDIO******************/
 
 * {
@@ -145,150 +61,150 @@ body, html {
   display: table;
   clear: both;
 }
+/*****************************/
 
-.column {
+.container {
   float: left;
-  width: 33%;
-}
-
-
-.cursor {
-  cursor: pointer;
-}
-
-img.hover-shadow {
-  transition: 0.3s;
-}
-
-.hover-shadow:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-/*--------------Login-----------------*/
-
-.section{
-  background-image: url("../image/img-login-left.png");
   width: 100%;
-  height: 540px;
+  color: #f1f1f1;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
 }
-.section h2{
-  margin-top: 0px;
-  padding-top: 40PX;
-  padding-left: 10PX;
-  color: white;
+
+.image-wrapper {
+  width: calc(33% - 10px); /* Restar el margen del 33% */
+  position: relative;
+  margin-right: 10px; /* Espacio entre imágenes */
 }
-.Login-p {
-  background: url("../image/img-login-left.png") no-repeat center top;
-  background-size: cover;
+
+.image {
+  width: 100%; /* Asegúrate de que la imagen ocupe todo el contenedor */
+  height: 500px; /* Mantiene la proporción de la imagen */
 }
-.Login-box {
-  width: 390px;
-  height: 480px;
-  background: #000;
-  color: #fff;
-  top: 50%;
-  left: 50%;
+
+.overlay {
   position: absolute;
-  transform: translate(-50%, -50%);
-  box-sizing: border-box;
-  padding: 70px 30px;
-}
-.Login-box .avatar {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  position: absolute;
-  top: 5px;
-  left: calc(50% - 50px);
-}
-.Login-box h1 {
-  text-align: center;
-  font-size: 22px;
-}
-.Login-box label {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  color: white; /* Color del texto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; /* Inicialmente oculto */
+  transition: opacity 0.3;
   font-weight: bold;
-  display: block;
 }
-.Login-box input {
+
+.image-wrapper:hover .overlay {
+  opacity: 1; /* Muestra el overlay al pasar el ratón */
+}
+/* Efecto al pasar el mouse (zoom y mostrar overlay) */
+.image-wrapper:hover .image {
+  transform: scale(0.9); /* Escala la imagen al 110% */
+  transition: transform 0.6s ease; /* Transición suave para el zoom */
+}
+
+/****************************************/
+
+.we-are{
   width: 100%;
-  margin-bottom: 20px;
-}
-.Login-box input[type="text"],
-.Login-box input[type="password"] {
-  border: none;
-  border-bottom: 1px solid #fff;
-  background: transparent;
-  outline: none;
-  height: 40px;
-  color: #fff;
-  font-size: 16px;
-}
-.Login-box input[type="submit"] {
-  border: none;
-  outline: none;
-  height: 40px;
-  background-color: red;
-  color: #fff;
-  font-size: 18px;
-  border-radius: 20px;
-}
-.Login-box a {
-  text-decoration: none;
-  font-size: 12px;
-  line-height: 20px;
-  color: darkgray;
+  height: 300px;
+  background-color: rgb(37, 37, 37);
+  padding-bottom: 30px;
 
 }
-.Login-box a:hover {
-  color: #fff;
+.we-are h1{
+  padding-left: 70px;
+  padding-top: 50px;
+  color: white;
+  font-size: 40px;
+  margin-bottom: 0px;
 }
-.fb {
-  background-color: #3B5998;
+.we-are h2{
+  padding-left: 70px;
+  padding-right: 100px;
   color: white;
 }
-
-.twitter {
-  background-color: #55ACEE;
+.we-are p{
+  padding-left: 70px;
+  padding-right: 40px;
+  font-size: 20px;
   color: white;
 }
-
-.google {
-  background-color: #dd4b39;
-  color: white;
-}
-.col {
-  float: left;
-  width: 50%;
-  margin: auto;
-  padding: 0 50px;
-  margin-top: 6px;
-}
-input,
-.btn {
+.img-index-midle{
+  background-image: url(../image/img-index-medio.jpg);
   width: 100%;
+  height: 700px;
+  margin-top: 30px;
+}
+
+/**********************************************/
+.container-schedule {
+  display: flex;
+  width: 100%;
+  height: 580px;
+  background-image: url(../image/img-horario.jpg);
+}
+.schedule{
+  width: 100%;
+  height: 500px;
+  margin-top: 40px;
+}
+.schedule h2{
+  padding-left: 100px;
+  color: white;
+  padding-bottom: 30px;
+}
+table {
+  width: 300px;
+  border-collapse: collapse;
+  margin-left: 100px;
+}
+th, td {
   padding: 12px;
-  border: none;
-  border-radius: 4px;
-  margin: 5px 0;
-  opacity: 0.85;
-  display: inline-block;
-  font-size: 17px;
-  line-height: 20px;
-  text-decoration: none; /* remove underline from anchors */
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  color: white;
 }
+
 
 /********************************************************/
 
 footer {
   padding-top: 10px;
   padding-left: 20px;
-  height: 200px;
+  padding-right: 20px;
+  height: 330px;
   background-color: black;
   color: white;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 13px;
 }
 
-footer a{
+footer h2{
   color: white;
+  padding-left: 50px;
+}
+footer p{
+  padding-left: 50px;
+}
+.container-contactanos {
+  display: flex;
+  width: 100%;
+}
+.container-contactanos-left {
+  flex:3; 
+  box-sizing: border-box;
+}
+.container-contactanos-midle {
+  flex: 3;
+  box-sizing: border-box;
+}
+.container-contactanos-right {
+  flex: 3;
+  box-sizing: border-box;
 }

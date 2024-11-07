@@ -1,109 +1,113 @@
-.contenedor-form {
-    background: rgba(0,0,0,.7);
-    max-width: 500px;
+/*--------------Login-----------------*/
+
+.section{
+    background-image: url("../image/img-login-left.png");
     width: 100%;
-    margin: 48px auto;
-    border-radius: 5px;
-    color: #fff;
-    position: relative;
-    float: right;
-    margin-right: 50px;
-    /*padding: 40px;*/
-}
-.contenedor-form .toggle {
-    position: absolute;
-    top: 7px;
-    right: 7px;
-    width: 100px;
-    height: 30px;
-    font-size: 12px;
-    line-height: 25px;
-    text-align: center;
-    border-top: 2px solid #ff851b;
-    border-bottom: 2px solid #ff851b;
-    cursor: pointer;
-    transition: all .5s ease;
-}
-
-.contenedor-form .toggle:hover {
-    border-top: 2px solid #0075d9;
-    border-bottom: 2px solid #0075d9;
-}
-
-.contenedor-form .toggle span {
-    letter-spacing: 1px;
-}
-
-.contenedor-form h2 {
-    margin: 0 0 28px 0;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 1;
-}
-.contenedor-form input[type="text"],
-.contenedor-form input[type="password"],
-.contenedor-form input[type="email"] {
-    outline: none;
-    display: block;
-    width: 100%;
-    padding: 10px 15px;
-    margin: 0 0 20px 0;
-    background: rgba(0,0,0,.5);
-    color: #fff;
-    border: none;
-    border-radius: 2px;
-    border-bottom: 4px solid #ff851b;
-    box-sizing: border-box;
-    font-family: Roboto;
+    height: 540px;
+  }
+  .section h2{
+    margin-top: 0px;
+    padding-top: 40PX;
+    padding-left: 10PX;
+    color: white;
     font-size: 14px;
-    font-weight:normal;
-    transition: all .5s ease;
-}
-
-.contenedor-form input[type="text"]:focus,
-.contenedor-form input[type="password"]:focus,
-.contenedor-form input[type="email"]:focus {
-    border-bottom: 4px solid #0075d9;
-}
-
-.contenedor-form input[type="submit"] {
-    background: #FF851B;
-    color: #FFF;
-    width: 100%;
-    border: none;
-    padding: 10px 0;
-    font-size: 16px;
-    font-weight: normal;
-    font-family: Roboto;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all .5s ease;
-}
-
-.contenedor-form input[type="submit"]:hover {
-    background: rgba(0, 117, 217, 0.7);
-}
-
-.contenedor-form .reset-password {
-    background: rgba(0, 117, 217, .7);
-    width: 100%;
-    padding: 15px 0;
-    text-align: center;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-
-.contenedor-form .reset-password a {
+  }
+  .Login-p {
+    background: url("../image/img-login-left.png") no-repeat center top;
+    background-size: cover;
+  }
+  .Login-box {
+    width: 390px;
+    height: 480px;
+    background: #000;
     color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.contenedor-form .formulario {
-    display: none;
-    padding: 40px;
-}
-
-.contenedor-form .formulario:nth-child(2) {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+  }
+  .Login-box .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: 5px;
+    left: calc(50% - 50px);
+  }
+  .Login-box h1 {
+    text-align: center;
+    font-size: 22px;
+  }
+  .Login-box label {
+    font-weight: bold;
     display: block;
-}
+  }
+  .Login-box input {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .Login-box input[type="text"],
+  .Login-box input[type="password"] {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+  }
+  .Login-box input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background-color: red;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+  }
+  .Login-box a {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgray;
+  
+  }
+  .Login-box a:hover {
+    color: #fff;
+  }
+  .fb {
+    background-color: #3B5998;
+    color: white;
+  }
+  
+  .twitter {
+    background-color: #55ACEE;
+    color: white;
+  }
+  
+  .google {
+    background-color: #dd4b39;
+    color: white;
+  }
+  .col {
+    float: left;
+    width: 50%;
+    margin: auto;
+    padding: 0 50px;
+    margin-top: 6px;
+  }
+  input,
+  .btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    margin: 5px 0;
+    opacity: 0.85;
+    display: inline-block;
+    font-size: 17px;
+    line-height: 20px;
+    text-decoration: none; /* remove underline from anchors */
+  }
