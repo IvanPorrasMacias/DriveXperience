@@ -20,7 +20,7 @@
     <a class="bar-nav" href="{% url 'login' %}">INICIO DE SESIÓN</a>
     {% endif %} 
     <a class="bar-nav" href="{% url 'catalogo' %}">VEHÍCULOS</a>
-    <a class="bar-nav" href="#">CONTACTO</a>
+    <a class="bar-nav" href="#footer">CONTACTO</a>
     {% if request.user.is_authenticated %}
     <a class="bar-nav">Bienvenido, {{ user.username }}</a>
     {% endif %}
@@ -31,8 +31,8 @@
         <div class="container">
           {% load static %}
           <div class="image-wrapper">
-            <a href="CatalogoAutos.html">
-              <img src="{% static 'image/image-financiamiento.jpg' %}" alt="Img-Financiamiento" class="image"
+            <a href="{% url 'catalogo' %}">
+              <img src="{% static 'image/img-financiamiento.jpg' %}" alt="Img-Financiamiento" class="image"
                 id="image-financiamiento" />
               <div class="overlay">
                 <p>¡REALIZAR SIMULACIÓN!</p>
@@ -40,16 +40,16 @@
             </a>
           </div>
           <div class="image-wrapper">
-            <a href="login.html">
-              <img src="{% static 'image/image-servicio' %}" alt="Img-Servicio" class="image" id="image-servicio" />
+            <a href="{% url 'login' %}">
+              <img src="{% static 'image/img-servicio.jpg' %}" alt="Img-Servicio" class="image" id="image-servicio" />
               <div class="overlay">
                 <p>¡AGENDAR CITA!</p>
               </div>
             </a>
           </div>
           <div class="image-wrapper">
-            <a href="login.html">
-              <img src="{% static 'image/image-prueba' %}" alt="Img-Promociones" class="image" id="image-prueba" />
+            <a href="{% url 'login' %}">
+              <img src="{% static 'image/img-prueba-manejo.jpg' %}" alt="Img-PruebaManejo" class="image" id="image-prueba" />
               <div class="overlay">
                 <p>¡AGENDAR CITA!</p>
               </div>
