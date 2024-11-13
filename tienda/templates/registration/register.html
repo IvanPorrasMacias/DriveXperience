@@ -1,0 +1,16 @@
+{% load crispy_forms_tags %}
+<div class="formulario">
+    <h2>Crea tu Cuenta</h2>
+    
+    {% if error %}
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+    {% endif %}
+    
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <input type="submit" value="Registrarse" /> 
+    </form>
+</div>

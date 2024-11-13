@@ -152,7 +152,7 @@ STATICFILES_DIRS = [
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-AUTH_USER_MODEL = "tienda.Usuario"
+AUTH_USER_MODEL = 'tienda.Usuario'
 
 # Variables de redirección de LOGIN y LOGOUT
 LOGIN_REDIRECT_URL = 'indexCar'
