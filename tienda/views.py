@@ -32,7 +32,7 @@ def RegistroView(request):
         if user_creation_form.is_valid():
             auth_user = user_creation_form.save()
             auth_user = authenticate(
-                username=user_creation_form.cleaned_data['username'],
+                username=auth_user.username,
                 password=user_creation_form.cleaned_data['password1']
             )
             if auth_user is not None:

@@ -6,9 +6,9 @@ class Usuario(AbstractUser):
     teléfono = models.CharField(max_length=20)
     RFC = models.CharField(max_length=13)
 
-    # def save(self, *args, **kwargs):
-    #     self.username = (self.first_name[:3] + self.last_name[:3] + self.teléfono[-3:]).lower()
-    #     super(Usuario, self).save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        self.username = (self.first_name[:3] + self.last_name[:3] + self.teléfono[-3:]).lower()
+        super(Usuario, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.username
