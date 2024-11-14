@@ -25,61 +25,17 @@
 
   <section style="background-color: white;">
     <div class="row">
-      {% load static %}
-      <div class="column">
-        <div class="content">
-          <img id="carImage1" src="{% static 'image/auto1.png' %}" style="width: 100%" />
-          <h4>Ford Explorer 2024</h4>
-          <p><b>Precio:</b> <span id="carPrice1">440,000</span></p>
-          <p><b>Año:</b> <span id="carYear1">2022</span></p>
-          <button class="btn" onclick="redirectToPage(1)">Adquirir</button>
+      {% for vehículos in vehículos %}
+        <div class="column">
+          <div class="content">
+            <img src="{{ vehículos.fotoLateral.url }}" style="width: 100%">
+            <h4>{{ vehículos.marca }} {{ vehículos.modelo }} {{ vehículos.año }}</h4>
+            <p><b>Precio:</b> ${{ vehículos.precioLista }}</p>
+            <p><b>Año:</b> {{ vehículos.año }}</p>
+            <button class="btn" onclick="redirectToPage('{{ vehículos.id }}')">Adquirir</button>
+          </div>
         </div>
-      </div>
-      <div class="column">
-        <div class="content">
-          <img id="carImage1" src="{% static 'image/auto2.png' %}" style="width: 100%" />
-          <h4>Acura</h4>
-          <p><b>Precio:</b> <span id="carPrice1">440,000</span></p>
-          <p><b>Año:</b> <span id="carYear1">2022</span></p>
-          <button class="btn" onclick="redirectToPage(1)">Adquirir</button>
-        </div>
-      </div>
-      <div class="column">
-        <div class="content">
-          <img id="carImage1" src="{% static 'image/auto3.png' %}" style="width: 100%" />
-          <h4>Acura</h4>
-          <p><b>Precio:</b> <span id="carPrice1">440,000</span></p>
-          <p><b>Año:</b> <span id="carYear1">2022</span></p>
-          <button class="btn" onclick="redirectToPage(1)">Adquirir</button>
-        </div>
-      </div>
-      <div class="column">
-        <div class="content">
-          <img id="carImage1" src="{% static 'image/auto1.png' %}" style="width: 100%" />
-          <h4>Acura</h4>
-          <p><b>Precio:</b> <span id="carPrice1">440,000</span></p>
-          <p><b>Año:</b> <span id="carYear1">2022</span></p>
-          <button class="btn" onclick="redirectToPage(1)">Adquirir</button>
-        </div>
-      </div>
-      <div class="column">
-        <div class="content">
-          <img id="carImage1" src="{% static 'image/auto2.png' %}" style="width: 100%" />
-          <h4>Acura</h4>
-          <p><b>Precio:</b> <span id="carPrice1">440,000</span></p>
-          <p><b>Año:</b> <span id="carYear1">2022</span></p>
-          <button class="btn" onclick="redirectToPage(1)">Adquirir</button>
-        </div>
-      </div>
-      <div class="column">
-        <div class="content">
-          <img id="carImage1" src="{% static 'image/auto3.png' %}" style="width: 100%" />
-          <h4>Acura</h4>
-          <p><b>Precio:</b> <span id="carPrice1">440,000</span></p>
-          <p><b>Año:</b> <span id="carYear1">2022</span></p>
-          <button class="btn" onclick="redirectToPage(1)">Adquirir</button>
-        </div>
-      </div>
+      {% endfor %}
     </div>  
   </section>
 
