@@ -15,11 +15,11 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('indexCar/', views.IndexView, name='indexCar'),
     path('login/', views.LoginView, name='login'),
-    path('registro/',views.RegistroView, name='registro'),
-    path('cotizador/',views.CotizadorView, name='cotizador'),
+    path('registro/', views.RegistroView, name='registro'),
+    path('cotizador/<int:vehículoId>', views.CotizadorView, name='cotizador'),
     path('catalogo/', views.CatalogoView, name='catalogo'),
-    path('accounts/',include(django.contrib.auth.urls)),
-    path('logout/',views.exit, name='exit')
+    path('accounts/', include(django.contrib.auth.urls)),
+    path('logout/', views.exit, name='exit')
 ]
 
 if settings.DEBUG:

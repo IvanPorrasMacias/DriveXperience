@@ -24,9 +24,9 @@
 
     <div class="car-container">
       <h2>Detalles del Auto</h2>
-      <img id="carImage" style="width: 30%" />
-      <p><b>Precio:</b> <span id="carPrice"></span></p>
-      <p><b>Año:</b> <span id="carYear"></span></p>
+      <img src="{{ vehículo.fotoLateral.url }}" style="width: 30%" alt="Foto del auto" />
+      <p><b>Precio:</b> <span> ${{ vehículo.precioLista }} </span></p>
+      <p><b>Año:</b> <span> {{ vehículo.año }}</span></p>
     </div>
     
 
@@ -97,16 +97,5 @@
         </p>
       </div>
     </div>
-
-    <script>
-
-      // Recupera la información de localStorage
-      document.getElementById("carImage").src =
-        localStorage.getItem("carImage");
-      document.getElementById("carPrice").innerText =
-        localStorage.getItem("carPrice");
-      document.getElementById("carYear").innerText =
-        localStorage.getItem("carYear");
-    </script>
   </body>
 </html>

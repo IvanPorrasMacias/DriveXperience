@@ -47,8 +47,9 @@ def RegistroView(request):
 
 
 @login_required
-def CotizadorView(request):
-    return render(request, 'cotizador.html')
+def CotizadorView(request, vehículoId):
+    vehículo = Vehículo.objects.get(id=vehículoId)
+    return render(request, 'cotizador.html', {'vehículo': vehículo})
 
 @login_required
 def CatalogoView(request):
