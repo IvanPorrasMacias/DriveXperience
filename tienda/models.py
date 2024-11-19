@@ -20,11 +20,11 @@ class Vehículo(models.Model):
     año = models.CharField(max_length=4)
     especificaciones = models.CharField(max_length=200)
     precioLista = models.DecimalField(max_digits=10, decimal_places=2)
-    enganche = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    precioMensualidades = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     fotoLateral = models.ImageField(default='acura.png', upload_to='autosTresCuartos/') 
 
     def save(self, *args, **kwargs):
-        self.enganche = (self.precioLista*30)/100
+        self.precioMensualidades = (self.precioLista*180)/100
         super(Vehículo, self).save(*args, **kwargs)
 
     def __str__(self):

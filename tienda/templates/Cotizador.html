@@ -25,11 +25,10 @@
     <div class="car-container">
       <h2>Detalles del Auto</h2>
       <img src="{{ vehículo.fotoLateral.url }}" style="width: 30%" alt="Foto del auto" />
-      <p><b>Precio:</b> <span> ${{ vehículo.precioLista }} </span></p>
+      <p><b>Precio:</b> <span id="precioLista"> ${{ vehículo.precioLista }} </span></p>
       <p><b>Año:</b> <span> {{ vehículo.año }}</span></p>
     </div>
     
-
     <div class="container">
       <div class="left-column">
         <h2>Configura tu crédito</h2>
@@ -38,26 +37,28 @@
           <form id="formEnganche">
             <label for="enganche">Enganche</label>
             <input
-              type="text"
+              type="number"
               id="enganche"
               name="enganche"
               placeholder="Ingrese el enganche deseado"
+              min="70000"
+              required
             />
-
+    
             <label for="plazoSelect">Mensualidades</label>
             <select id="plazoSelect" name="plazo">
               <option value="24meses">24 MESES</option>
               <option value="36meses">36 MESES</option>
               <option value="48meses">48 MESES</option>
             </select>
-
+    
             <label for="aseguradora">Aseguradora</label>
             <select name="aseguradora" id="aseguradora">
               <option value="qualitas">QUALITAS: $14,000</option>
               <option value="gnp">GNP: $12,000</option>
             </select>
-
-            <input type="submit" value="Generar" />
+    
+            <input type="button" value="Generar" id="submitBtn" disabled />
           </form>
         </div>
       </div>
@@ -65,13 +66,13 @@
         <div class="nav">
           <p class="text-nav-right-column">
             <span>MENSUALIDAD:</span>
-            <span></span>
+            <span id="mensualidad">-</span>
           </p>
         </div>
         <h3><b>RESUMEN DE COTIZADOR</b></h3>
         <p class="text-bold-right-column">
           <span class="label"><b>MONTO A FINANCIAR</b>:</span>
-          <span class="result" id="montoFinanciar"></span>
+          <span class="result" id="montoFinanciar">-</span>
         </p>
         <hr />
         <p class="text-bold-right-column">
@@ -80,7 +81,7 @@
         </p>
         <p class="text-right-column">
           <span class="label">Comisión por apertura:</span>
-          <span class="result" id="comisionApertura">-</span>
+          <span class="result" id="comisionApertura">$15,000</span>
         </p>
         <p class="text-right-column">
           <span class="label">Seguro de contado: </span>
@@ -89,13 +90,85 @@
         <hr />
         <p class="text-right-column">
           <span class="label">Tasa de interés:</span>
-          <span class="result" id="tasaInteres">-</span>
+          <span class="result" id="tasaInteres">8 %</span>
         </p>
         <p class="text-right-column">
           <span class="label">Plazo:</span>
           <span class="result" id="plazoLabel">-</span>
         </p>
       </div>
-    </div>
+    </div>  
   </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const engancheInput = document.getElementById("enganche");
+      const submitBtn = document.getElementById("submitBtn");
+      const montoFinanciarSpan = document.getElementById("montoFinanciar");
+      const mensualidadSpan = document.getElementById("mensualidad");
+      const plazoSelect = document.getElementById("plazoSelect");
+      const precioListaSpan = document.getElementById("precioLista");
+      const aseguradoraSelect = document.getElementById("aseguradora");
+      const seguroContadoSpan = document.getElementById("seguroContado");
+      const pagoInicialSpan = document.getElementById("pagoInicial"); // Cambio en el selector
+      const comisionApertura = 15000; // Valor fijo
+      const precioMensualidades = parseFloat("{{ vehículo.precioMensualidades|safe }}");
+    
+      aseguradoraSelect.addEventListener("change", function () {
+        const aseguradoraValue = aseguradoraSelect.value;
+    
+        // Actualiza el seguro de contado según la aseguradora seleccionada
+        let seguro;
+        switch (aseguradoraValue) {
+          case "qualitas":
+            seguro = 14000; // Valor de Qualitas
+            break;
+          case "gnp":
+            seguro = 12000; // Valor de GNP
+            break;
+          default:
+            seguro = 0; // Valor predeterminado si no hay aseguradora seleccionada
+        }
+        seguroContadoSpan.textContent = `$${seguro.toLocaleString()}`;
+      });
+    
+      // Obtiene el precio de lista del HTML y lo convierte en número limpio
+      const precioLista = parseFloat(
+        precioListaSpan.textContent.replace("$", "").replace(",", ".").trim()
+      );
+    
+      engancheInput.addEventListener("input", function () {
+        const engancheValue = parseFloat(engancheInput.value);
+    
+        // Habilitar o deshabilitar el botón según la validación
+        if (!isNaN(engancheValue) && engancheValue >= 70000) {
+          submitBtn.disabled = false;
+        } else {
+          submitBtn.disabled = true;
+        }
+      });
+    
+      // Calcular monto a financiar y mensualidades cuando se presiona el botón "Generar"
+      submitBtn.addEventListener("click", function () {
+        const engancheValue = parseFloat(engancheInput.value);
+        const plazoValue = parseInt(plazoSelect.value);
+        const seguroValue = parseFloat(
+          seguroContadoSpan.textContent.replace("$", "").replace(",", "").trim()
+        );
+    
+        if (!isNaN(engancheValue) && engancheValue >= 70000) {
+          const montoFinanciar = precioLista - engancheValue;
+          const mensualidades = montoFinanciar / plazoValue;
+    
+          montoFinanciarSpan.textContent = `$${montoFinanciar.toLocaleString()}`;
+          mensualidadSpan.textContent = `$${mensualidades.toFixed(2)}`;
+    
+          const pagoInicial = comisionApertura + (isNaN(seguroValue) ? 0 : seguroValue) + mensualidades;
+    
+          pagoInicialSpan.textContent = `$${pagoInicial.toFixed(2)}`;
+        } else {
+          alert("Por favor, ingrese un enganche válido.");
+        }
+      });
+    });    
+  </script>  
 </html>
