@@ -1,16 +1,43 @@
-{% load crispy_forms_tags %}
-<div class="formulario">
-    <h2>Crea tu Cuenta</h2>
-    
-    {% if error %}
-        <div class="alert alert-danger">
-            {{ error }}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrarse</title>
+    {% load static crispy_forms_tags %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}" />
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register-form.css' %}" />
+</head>
+
+<body>
+    <nav class="topnav">
+        <a class="home-nav" href="{% url 'indexCar' %}"><img src="{% static 'image/logo.jpg' %}" alt="logo" /></a>
+        {% if request.user.is_authenticated %}
+        <a class="bar-nav" href="{% url 'exit' %}">Cerrar Sesión</a>
+        {% else %}
+        <a class="bar-nav" href="{% url 'login' %}">Inicio de Sesión</a>
+        {% endif %}
+        <a class="bar-nav" href="#footer">Contacto</a>
+    </nav>
+    {% load crispy_forms_tags %}
+    <div class="contenedor-form">
+        <div class="formulario">
+            <h2>Crea tu Cuenta</h2>
+
+            {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+            {% endif %}
+
+            <form action="" method="post">
+                {% csrf_token %} {{ form | crispy }}
+                <input type="submit" value="Registrarse" />
+            </form>
         </div>
-    {% endif %}
+    </div>
     
-    <form action="" method="post">
-        {% csrf_token %}
-        {{ form | crispy }}
-        <input type="submit" value="Registrarse" /> 
-    </form>
-</div>
+</body>
+
+</html>

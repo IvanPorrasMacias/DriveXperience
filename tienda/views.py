@@ -59,3 +59,6 @@ def CatalogoView(request):
 def exit(request):
     logout(request)
     return redirect('indexCar')
+
+def Registro2View(request):
+    return render(request,'registration/register2.html')

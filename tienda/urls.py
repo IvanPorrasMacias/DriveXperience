@@ -19,7 +19,8 @@ urlpatterns = [
     path('cotizador/<int:vehículoId>', views.CotizadorView, name='cotizador'),
     path('catalogo/', views.CatalogoView, name='catalogo'),
     path('accounts/', include(django.contrib.auth.urls)),
-    path('logout/', views.exit, name='exit')
+    path('logout/', views.exit, name='exit'),
+    path('registro2/',views.Registro2View, name='registro2')
 ]
 
 if settings.DEBUG:

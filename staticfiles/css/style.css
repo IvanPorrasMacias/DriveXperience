@@ -209,3 +209,30 @@ footer p{
   flex: 3;
   box-sizing: border-box;
 }
+/*********************/
+.contenedor-form {
+  background: rgba(0,0,0,.7);
+  max-width: 500px;
+  width: 100%;
+  margin: 48px auto;
+  border-radius: 5px;
+  color: #fff;
+  position: relative;
+  float: right;
+  margin-right: 50px;
+  /*padding: 40px;*/
+}
+.contenedor-form .toggle {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 100px;
+  height: 30px;
+  font-size: 12px;
+  line-height: 25px;
+  text-align: center;
+  border-top: 2px solid #ff851b;
+  border-bottom: 2px solid #ff851b;
+  cursor: pointer;
+  transition: all .5s ease;
+}
