@@ -33,7 +33,11 @@ class Vehículo(models.Model):
 
 class Plan(models.Model):
     mensualidades = models.IntegerField()
-    interes = models.DecimalField(max_digits=5,decimal_places=2,default=5.00)
+    plazo = models.IntegerField()
+    montoAFinanciar = models.DecimalField(max_digits=10, decimal_places=2)
+    pagoInicial = models.DecimalField(max_digits=10, decimal_places=2)
+    seguroContado = models.DecimalField(max_digits=10, decimal_places=2)
+    tazaInteres = models.DecimalField(max_digits=5,decimal_places=2,default=5.00)
     comisionApertura = models.DecimalField(max_digits=10,decimal_places=2,default=5000.00)
     seguro = models.DecimalField(max_digits=10,decimal_places=2,default=12000.00)
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)

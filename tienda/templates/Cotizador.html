@@ -157,7 +157,7 @@
     
         if (!isNaN(engancheValue) && engancheValue >= 70000) {
           const montoFinanciar = precioLista - engancheValue;
-          const mensualidades = montoFinanciar / plazoValue;
+          const mensualidades = precioMensualidades / plazoValue;
     
           montoFinanciarSpan.textContent = `$${montoFinanciar.toLocaleString()}`;
           mensualidadSpan.textContent = `$${mensualidades.toFixed(2)}`;
