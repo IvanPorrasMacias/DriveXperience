@@ -32,7 +32,7 @@
     <div class="container">
       <div class="left-column">
         <h2>Configura tu crédito</h2>
-        <p>Enganche mínimo de $70,000</p>
+        <p>Enganche mínimo de $100,000</p>
         <div class="Form">
           <form id="formEnganche">
             <label for="enganche">Enganche</label>
@@ -47,9 +47,9 @@
     
             <label for="plazoSelect">Mensualidades</label>
             <select id="plazoSelect" name="plazo">
-              <option value="24meses">24 MESES</option>
-              <option value="36meses">36 MESES</option>
-              <option value="48meses">48 MESES</option>
+              <option value="24">24 MESES</option>
+              <option value="36">36 MESES</option>
+              <option value="48">48 MESES</option>
             </select>
     
             <label for="aseguradora">Aseguradora</label>
@@ -85,7 +85,7 @@
         </p>
         <p class="text-right-column">
           <span class="label">Seguro de contado: </span>
-          <span class="result" id="seguroContado">-</span>
+          <span class="result" id="seguroContado">$14,000</span>
         </p>
         <hr />
         <p class="text-right-column">
@@ -94,7 +94,7 @@
         </p>
         <p class="text-right-column">
           <span class="label">Plazo:</span>
-          <span class="result" id="plazoLabel">-</span>
+          <span class="result" id="plazoLabel">24 MESES</span>
         </p>
       </div>
     </div>  
@@ -106,6 +106,7 @@
       const montoFinanciarSpan = document.getElementById("montoFinanciar");
       const mensualidadSpan = document.getElementById("mensualidad");
       const plazoSelect = document.getElementById("plazoSelect");
+      const plazoSpan = document.getElementById("plazoLabel");
       const precioListaSpan = document.getElementById("precioLista");
       const aseguradoraSelect = document.getElementById("aseguradora");
       const seguroContadoSpan = document.getElementById("seguroContado");
@@ -126,10 +127,16 @@
             seguro = 12000; // Valor de GNP
             break;
           default:
-            seguro = 0; // Valor predeterminado si no hay aseguradora seleccionada
+            seguro = 14000; // Valor predeterminado si no hay aseguradora seleccionada
         }
         seguroContadoSpan.textContent = `$${seguro.toLocaleString()}`;
       });
+
+      plazoSelect.addEventListener("change", function () {
+        const plazoSelectValue = plazoSelect.value;
+        plazoSpan.textContent = `${plazoSelectValue} MESES`;
+      });
+      
     
       // Obtiene el precio de lista del HTML y lo convierte en número limpio
       const precioLista = parseFloat(
@@ -140,7 +147,7 @@
         const engancheValue = parseFloat(engancheInput.value);
     
         // Habilitar o deshabilitar el botón según la validación
-        if (!isNaN(engancheValue) && engancheValue >= 70000) {
+        if (!isNaN(engancheValue) && engancheValue >= 100000) {
           submitBtn.disabled = false;
         } else {
           submitBtn.disabled = true;
@@ -150,7 +157,7 @@
       // Calcular monto a financiar y mensualidades cuando se presiona el botón "Generar"
       submitBtn.addEventListener("click", function () {
         const engancheValue = parseFloat(engancheInput.value);
-        const plazoValue = parseInt(plazoSelect.value);
+        const plazoValue = plazoSelect.value
         const seguroValue = parseFloat(
           seguroContadoSpan.textContent.replace("$", "").replace(",", "").trim()
         );
