@@ -112,7 +112,7 @@
       const seguroContadoSpan = document.getElementById("seguroContado");
       const pagoInicialSpan = document.getElementById("pagoInicial"); // Cambio en el selector
       const comisionApertura = 15000; // Valor fijo
-      const precioMensualidades = parseFloat("{{ vehículo.precioMensualidades|safe }}");
+      const interesMensual = parseFloat("{{ vehículo.interesMensual|safe }}");
     
       aseguradoraSelect.addEventListener("change", function () {
         const aseguradoraValue = aseguradoraSelect.value;
@@ -164,7 +164,7 @@
     
         if (!isNaN(engancheValue) && engancheValue >= 70000) {
           const montoFinanciar = precioLista - engancheValue;
-          const mensualidades = precioMensualidades / plazoValue;
+          const mensualidades = (montoFinanciar / plazoValue) + interesMensual;
     
           montoFinanciarSpan.textContent = `$${montoFinanciar.toLocaleString()}`;
           mensualidadSpan.textContent = `$${mensualidades.toFixed(2)}`;

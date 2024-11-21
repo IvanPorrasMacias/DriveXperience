@@ -20,11 +20,13 @@ class Vehículo(models.Model):
     año = models.CharField(max_length=4)
     especificaciones = models.CharField(max_length=200)
     precioLista = models.DecimalField(max_digits=10, decimal_places=2)
-    precioMensualidades = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    interesAnual = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    interesMensual = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     fotoLateral = models.ImageField(default='acura.png', upload_to='autosTresCuartos/') 
 
     def save(self, *args, **kwargs):
-        self.precioMensualidades = (self.precioLista*180)/100
+        self.interesAnual = (self.precioLista*8)/100
+        self.interesMensual = self.interesAnual/12
         super(Vehículo, self).save(*args, **kwargs)
 
     def __str__(self):
@@ -37,9 +39,9 @@ class Plan(models.Model):
     montoAFinanciar = models.DecimalField(max_digits=10, decimal_places=2)
     pagoInicial = models.DecimalField(max_digits=10, decimal_places=2)
     seguroContado = models.DecimalField(max_digits=10, decimal_places=2)
-    tazaInteres = models.DecimalField(max_digits=5,decimal_places=2,default=5.00)
-    comisionApertura = models.DecimalField(max_digits=10,decimal_places=2,default=5000.00)
-    seguro = models.DecimalField(max_digits=10,decimal_places=2,default=12000.00)
+    tazaInteres = models.DecimalField(max_digits=5,decimal_places=2,default=8.00)
+    comisionApertura = models.DecimalField(max_digits=10,decimal_places=2,default=15000.00)
+    seguro = models.DecimalField(max_digits=10,decimal_places=2)
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     vehículo = models.ForeignKey(Vehículo, on_delete=models.CASCADE)
 
