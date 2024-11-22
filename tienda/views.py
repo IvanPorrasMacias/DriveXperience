@@ -61,8 +61,8 @@ def exit(request):
     logout(request)
     return redirect('indexCar')
 
-def Registro2View(request):
-    return render(request,'registration/register2.html')
+# def Registro2View(request):
+#     return render(request,'registration/register2.html')
 
 def guardar_cotizacion(request):
     if request.method == 'POST' and request.user.is_authenticated:
