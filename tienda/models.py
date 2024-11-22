@@ -34,22 +34,18 @@ class Vehículo(models.Model):
 
 
 class Plan(models.Model):
-    mensualidades = models.IntegerField()
+    mensualidades = models.DecimalField(max_digits=10, decimal_places=2)
     plazo = models.IntegerField()
     montoAFinanciar = models.DecimalField(max_digits=10, decimal_places=2)
     pagoInicial = models.DecimalField(max_digits=10, decimal_places=2)
     seguroContado = models.DecimalField(max_digits=10, decimal_places=2)
     tazaInteres = models.DecimalField(max_digits=5,decimal_places=2,default=8.00)
     comisionApertura = models.DecimalField(max_digits=10,decimal_places=2,default=15000.00)
-    seguro = models.DecimalField(max_digits=10,decimal_places=2)
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     vehículo = models.ForeignKey(Vehículo, on_delete=models.CASCADE)
 
-    def save(self, *args, **kwargs):
-        interesMensual = (self.vehículo.precioLista / self.mensualidades) * self.interes
-        interesTotal = interesMensual * self.mensualidades
-        self.costoTotal = self.vehículo.precioLista + interesTotal
-        super(Plan, self).save(*args, **kwargs)
+    def __str__(self):
+        return f"{self.id} - {self.usuario.first_name} - {self.vehículo.marca} {self.vehículo.modelo}"
 
 class Promociones(models.Model):
     descuento = models.IntegerField()

@@ -1,11 +1,12 @@
+import json
 from django.http import JsonResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, get_user_model
 from rest_framework import viewsets
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 
-from .models import Usuario,Vehículo
+from .models import Plan, Usuario, Vehículo
 from .serializers import UsuarioSerializer,VehículoSerializer
 from .forms import CustomUserAuthenticationForm, CustomUserRegistrationForm
 
@@ -48,7 +49,7 @@ def RegistroView(request):
 
 @login_required
 def CotizadorView(request, vehículoId):
-    vehículo = Vehículo.objects.get(id=vehículoId)
+    vehículo = get_object_or_404(Vehículo, id=vehículoId)
     return render(request, 'cotizador.html', {'vehículo': vehículo})
 
 @login_required
@@ -62,3 +63,32 @@ def exit(request):
 
 def Registro2View(request):
     return render(request,'registration/register2.html')
+
+def guardar_cotizacion(request):
+    if request.method == 'POST' and request.user.is_authenticated:
+        try:
+            data = json.loads(request.body)
+            usuario = request.user
+            vehículo_id = data.get('vehiculo_id')
+            mensualidades = data.get('mensualidades')
+            plazo = data.get('plazo')
+            monto_a_financiar = data.get('monto_a_financiar')
+            pago_inicial = data.get('pago_inicial')
+            seguro_contado = data.get('seguro_contado')
+            
+            vehículo = get_object_or_404(Vehículo, id=vehículo_id)
+
+            # Crear y guardar el nuevo plan
+            plan = Plan.objects.create(
+                mensualidades=int(mensualidades),
+                plazo=int(plazo),
+                montoAFinanciar=float(monto_a_financiar),
+                pagoInicial=float(pago_inicial),
+                seguroContado=float(seguro_contado),
+                usuario=usuario,
+                vehículo=vehículo
+            )
+            return JsonResponse({"success": True, "message": "Cotización guardada exitosamente."})
+        except Exception as e:
+            return JsonResponse({"success": False, "error": str(e)})
+    return JsonResponse({"success": False, "message": "Método no permitido o usuario no autenticado."})

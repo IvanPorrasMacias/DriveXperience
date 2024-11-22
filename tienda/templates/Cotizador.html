@@ -96,6 +96,7 @@
           <span class="label">Plazo:</span>
           <span class="result" id="plazoLabel">24 MESES</span>
         </p>
+        <input type="button" id="guardarCotizacion" value="Guardar Cotización" />
       </div>
     </div>  
   </body>
@@ -176,6 +177,34 @@
           alert("Por favor, ingrese un enganche válido.");
         }
       });
+      document.getElementById("guardarCotizacion").addEventListener("click", function () {
+        const data = {
+            vehiculo_id: parseInt("{{ vehículo.id }}"),
+            mensualidades: parseFloat(document.getElementById("mensualidad").textContent.replace("$", "").trim()),
+            plazo: parseInt(document.getElementById("plazoLabel").textContent.replace(" MESES", "").trim()),
+            monto_a_financiar: parseFloat(document.getElementById("montoFinanciar").textContent.replace("$", "").replace(",","").trim()),
+            pago_inicial: parseFloat(document.getElementById("pagoInicial").textContent.replace("$", "").trim()),
+            seguro_contado: parseFloat(document.getElementById("seguroContado").textContent.replace("$", "").replace(",", "").trim())
+        };
+
+        fetch("{% url 'guardar_cotizacion' %}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": "{{ csrf_token }}"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.success) {
+                alert(result.message);
+            } else {
+                alert("Error: " + result.error);
+            }
+        })
+        .catch(error => console.error("Error:", error));
+    });
     });    
   </script>  
 </html>
