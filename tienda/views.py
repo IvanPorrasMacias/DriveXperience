@@ -57,6 +57,13 @@ def CatalogoView(request):
     vehículos = Vehículo.objects.all()
     return render(request, 'CatalogoAutos.html', {'vehículos': vehículos})
 
+@login_required
+def PanelUsuarioView(request):
+    actual_user = request.user
+    planes = Plan.objects.filter(usuario=actual_user)
+    return render(request, "panelUsuario.html", {'planes': planes})
+
+
 def exit(request):
     logout(request)
     return redirect('indexCar')
