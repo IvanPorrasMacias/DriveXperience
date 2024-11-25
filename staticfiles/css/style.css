@@ -1,238 +1,214 @@
+/* General reset and settings */
 body, html {
   height: 100%;
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   background-color: white;
   scroll-behavior: smooth;
-
 }
+
 .topnav {
-    background-color: black;
-    overflow: hidden;
-  }
-  
-  .home-nav {
-    flex: auto;
-    float: left;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 15px;
-  }
-  .home-nav img {
-    height: 40px; /* Ajusta la altura de la imagen */
-    width: auto; /* Mantiene la proporción */
-}
-  .bar-nav {
-    float: right;
-    color: white;
-    text-align: center;
-    padding: 15px 16px;
-    text-decoration: none;
-    font-size: 12px;
-    margin-top: 10px;
-    font-size: 15px;
-  }
-  .bar-nav:hover {
-    text-decoration: underline; /* Subraya el texto al pasar el mouse */
+  background-color: black;
+  overflow: hidden;
 }
 
-  
-/******************************************/
+.home-nav {
+  flex: auto;
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.home-nav img {
+  height: 40px;
+  width: auto;
+}
+
+.bar-nav {
+  float: right;
+  color: white;
+  text-align: center;
+  padding: 15px 16px;
+  text-decoration: none;
+  font-size: 12px;
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+.bar-nav:hover {
+  text-decoration: underline;
+}
+
 .main-image {
-  background-image:url("../image/img-principal.jpg");
+  background-image: url("../image/img-principal.jpg");
   width: 100%;
   height: 700px;
 }
 
-/****************MEDIO******************/
+/***************** Section Styles ******************/
 
 * {
   box-sizing: border-box;
 }
 
-.row > .column {
-  padding: 0 8px;
-}
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-/*****************************/
-
-.container {
-  float: left;
-  width: 100%;
-  color: #f1f1f1;
-  padding: 20px;
+/* Row Setup */
+.row {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;  /* Allows wrapping of elements */
+  gap: 10px; /* Space between the columns */
+  justify-content: space-between; /* Centers elements */
+  padding: 0 10px;
 }
 
-.image-wrapper {
-  width: calc(33% - 10px); /* Restar el margen del 33% */
-  position: relative;
-  margin-right: 10px; /* Espacio entre imágenes */
+.column {
+  flex: 1; /* Ensures equal width for each column */
+  max-width: 31%; /* Three columns in a row */
+  box-sizing: border-box;
+  padding: 10px;
 }
 
-.image {
-  width: 100%; /* Asegúrate de que la imagen ocupe todo el contenedor */
-  height: 500px; /* Mantiene la proporción de la imagen */
+.column img {
+  width: 100%;  /* Ensures image takes full width of the column */
+  height: auto;  /* Maintains aspect ratio */
+  object-fit: cover;  /* Ensures images fill the container */
 }
 
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
-  color: white; /* Color del texto */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0; /* Inicialmente oculto */
-  transition: opacity 0.3;
-  font-weight: bold;
+.content {
+  background-color: rgb(241, 241, 241);
+  padding: 10px;
+  margin-top: 20px;
+  text-align: center;
 }
 
-.image-wrapper:hover .overlay {
-  opacity: 1; /* Muestra el overlay al pasar el ratón */
-}
-/* Efecto al pasar el mouse (zoom y mostrar overlay) */
-.image-wrapper:hover .image {
-  transform: scale(0.9); /* Escala la imagen al 110% */
-  transition: transform 0.6s ease; /* Transición suave para el zoom */
+.btn {
+  border: none;
+  outline: none;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
 }
 
-/****************************************/
+.btn:hover {
+  background-color: lightgray;
+  color: black;
+}
 
-.we-are{
+.btn.active {
+  background-color: #666;
+  color: white;
+}
+
+/****************** We Are Section ******************/
+
+.we-are {
   width: 100%;
   height: 300px;
   background-color: rgb(37, 37, 37);
   padding-bottom: 30px;
-
 }
-.we-are h1{
+
+.we-are h1,
+.we-are h2,
+.we-are p {
+  color: white;
+}
+
+.we-are h1 {
   padding-left: 70px;
   padding-top: 50px;
-  color: white;
   font-size: 40px;
-  margin-bottom: 0px;
 }
-.we-are h2{
+
+.we-are h2 {
   padding-left: 70px;
   padding-right: 100px;
-  color: white;
 }
-.we-are p{
+
+.we-are p {
   padding-left: 70px;
   padding-right: 40px;
   font-size: 20px;
-  color: white;
-}
-.img-index-midle{
-  
-  background-image:url("../image/img-index-medio.jpg");
-  width: 100%;
-  height: 700px;
-  margin-top: 30px;
 }
 
-/**********************************************/
-.container-schedule {
-  display: flex;
-  width: 100%;
-  height: 580px;
-  background-image: url("../image/img-horario.jpg");
-}
-.schedule{
-  width: 100%;
-  height: 500px;
-  margin-top: 40px;
-}
-.schedule h2{
-  padding-left: 100px;
-  color: white;
-  padding-bottom: 30px;
-}
-table {
-  width: 300px;
-  border-collapse: collapse;
-  margin-left: 100px;
-}
-th, td {
-  padding: 12px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-  color: white;
+/****************** Media Queries ******************/
+
+/* For tablets and smaller screens */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column; /* Stack the columns vertically */
+    align-items: center; /* Center the columns */
+  }
+
+  .column {
+    max-width: 100%; /* Make each column full width on small screens */
+  }
+
+  .main-image {
+    height: 400px; /* Resize the image for smaller screens */
+  }
+
+  .we-are h1 {
+    font-size: 30px;
+    padding-left: 20px;
+  }
+
+  .we-are h2,
+  .we-are p {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
+/* For mobile screens */
+@media (max-width: 480px) {
+  .topnav .bar-nav,
+  .home-nav {
+    font-size: 12px; /* Reduce font size for mobile */
+    padding: 10px;
+  }
 
-/********************************************************/
+  .main-image {
+    height: 300px; /* Further resize the main image */
+  }
 
-footer {
-  padding-top: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  height: 330px;
-  background-color: black;
-  color: white;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 13px;
-}
+  .we-are h1 {
+    font-size: 24px;
+    padding-left: 10px;
+  }
 
-footer h2{
-  color: white;
-  padding-left: 50px;
-}
-footer p{
-  padding-left: 50px;
-}
-.container-contactanos {
-  display: flex;
-  width: 100%;
-}
-.container-contactanos-left {
-  flex:3; 
-  box-sizing: border-box;
-}
-.container-contactanos-midle {
-  flex: 3;
-  box-sizing: border-box;
-}
-.container-contactanos-right {
-  flex: 3;
-  box-sizing: border-box;
-}
-/*********************/
-.contenedor-form {
-  background: rgba(0,0,0,.7);
-  max-width: 500px;
-  width: 100%;
-  margin: 48px auto;
-  border-radius: 5px;
-  color: #fff;
-  position: relative;
-  float: right;
-  margin-right: 50px;
-  /*padding: 40px;*/
-}
-.contenedor-form .toggle {
-  position: absolute;
-  top: 7px;
-  right: 7px;
-  width: 100px;
-  height: 30px;
-  font-size: 12px;
-  line-height: 25px;
-  text-align: center;
-  border-top: 2px solid #ff851b;
-  border-bottom: 2px solid #ff851b;
-  cursor: pointer;
-  transition: all .5s ease;
+  .we-are h2,
+  .we-are p {
+    font-size: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .schedule {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+  }
+
+  table {
+    width: 100%;
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  footer {
+    font-size: 12px; /* Adjust font size in footer */
+    padding: 10px;
+  }
 }

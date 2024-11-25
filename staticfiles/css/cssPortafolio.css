@@ -1,28 +1,28 @@
-
 /* Center website */
 .main {
   max-width: 1000px;
   margin: auto;
 }
 
-.row { /*fila*/
-  margin: 10px -16px;
-  margin-left: 10px;
-  margin-right: 10px;
+.row {
+  display: flex; /* Cambiado de float a flexbox para flexibilidad */
+  flex-wrap: wrap; /* Permite que las columnas se acomoden en varias filas */
+  gap: 10px; /* Espacio entre columnas */
+  padding: 0 10px; /* Espaciado adicional */
 }
 
 /*Crea cuatro columnas iguales que floten una al lado de la otra.*/
 .column {
-  float: left;
-  width: 25%;
+  flex: 1 1 22%; /* Distribuye las columnas de forma flexible. Ajusta el tamaño */
+  box-sizing: border-box;
 }
-
 
 /* Content */
 .content {
   background-color: rgb(241, 241, 241);
   padding: 10px;
   margin-top: 20px;
+  text-align: center; /* Alinea el contenido al centro */
 }
 
 /* Estilo de los botones */
@@ -35,6 +35,7 @@
   cursor: pointer;
   display: block;
   margin: 0 auto;
+  text-align: center;
 }
 
 .btn:hover {
@@ -45,4 +46,28 @@
 .btn.active {
   background-color: #666;
   color: white;
+}
+
+/****************** Responsividad (Media Queries) ******************/
+
+/* Para pantallas más pequeñas (tabletas) */
+@media (max-width: 768px) {
+  .column {
+    flex: 1 1 45%; /* 2 columnas por fila */
+  }
+}
+
+/* Para pantallas muy pequeñas (móviles) */
+@media (max-width: 480px) {
+  .column {
+    flex: 1 1 100%; /* 1 columna por fila */
+  }
+
+  .main {
+    padding: 10px; /* Ajuste de padding en pantallas pequeñas */
+  }
+
+  .btn {
+    width: 100%; /* El botón ocupa toda la anchura */
+  }
 }
