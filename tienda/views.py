@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, get_user_model
 from rest_framework import viewsets
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from django.contrib import messages
 
 from .models import Plan, Usuario, Vehículo
 from .serializers import UsuarioSerializer,VehículoSerializer
@@ -63,6 +64,11 @@ def PanelUsuarioView(request):
     planes = Plan.objects.filter(usuario=actual_user)
     return render(request, "panelUsuario.html", {'planes': planes})
 
+def borrar_plan(request, plan_id):
+    plan = get_object_or_404(Plan, id=plan_id, usuario=request.user)  # Asegurarte de que el plan pertenezca al usuario
+    plan.delete()
+    messages.success(request, "El plan se ha eliminado correctamente.")
+    return redirect('panelUsuario')
 
 def exit(request):
     logout(request)
