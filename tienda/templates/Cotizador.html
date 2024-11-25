@@ -114,6 +114,7 @@
       const pagoInicialSpan = document.getElementById("pagoInicial"); // Cambio en el selector
       const comisionApertura = 15000; // Valor fijo
       const interesMensual = parseFloat("{{ vehículo.interesMensual|safe }}");
+      const precioListaAuto = parseFloat("{{ vehículo.precioLista|safe }}")
     
       aseguradoraSelect.addEventListener("change", function () {
         const aseguradoraValue = aseguradoraSelect.value;
@@ -148,7 +149,7 @@
         const engancheValue = parseFloat(engancheInput.value);
     
         // Habilitar o deshabilitar el botón según la validación
-        if (!isNaN(engancheValue) && engancheValue >= 100000) {
+        if (!isNaN(engancheValue) && engancheValue >= 100000 && engancheValue <= precioListaAuto) {
           submitBtn.disabled = false;
         } else {
           submitBtn.disabled = true;
