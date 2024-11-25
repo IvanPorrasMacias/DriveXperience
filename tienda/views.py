@@ -2,7 +2,8 @@ import json
 from django.urls import reverse
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import authenticate, login, get_user_model
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import Group
 from rest_framework import viewsets
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
@@ -34,6 +35,8 @@ def RegistroView(request):
         user_creation_form = CustomUserRegistrationForm(data=request.POST)
         if user_creation_form.is_valid():
             auth_user = user_creation_form.save()
+            clientes_group, created = Group.objects.get_or_create(name="Clientes")
+            auth_user.groups.add(clientes_group)
             auth_user = authenticate(
                 username=auth_user.username,
                 password=user_creation_form.cleaned_data['password1']
