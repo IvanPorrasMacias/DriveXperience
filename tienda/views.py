@@ -1,4 +1,5 @@
 import json
+from django.urls import reverse
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, get_user_model
@@ -101,7 +102,9 @@ def guardar_cotizacion(request):
                 usuario=usuario,
                 vehículo=vehículo
             )
-            return JsonResponse({"success": True, "message": "Cotización guardada exitosamente."})
+            return JsonResponse({"success": True, 
+                                 "message": "Cotización guardada exitosamente.",
+                                 "redirect_url": reverse('panelUsuario')})
         except Exception as e:
             return JsonResponse({"success": False, "error": str(e)})
     return JsonResponse({"success": False, "message": "Método no permitido o usuario no autenticado."})

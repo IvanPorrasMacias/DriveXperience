@@ -199,6 +199,7 @@
         .then(result => {
             if (result.success) {
                 alert(result.message);
+                window.location.href = result.redirect_url;
             } else {
                 alert("Error: " + result.error);
             }
