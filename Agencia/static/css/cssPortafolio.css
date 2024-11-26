@@ -1,29 +1,49 @@
-/* Center website */
+/* Container principal para centrar el contenido */
 .main {
   max-width: 1000px;
   margin: auto;
+  padding: 20px;
 }
 
+/* Configuración de la fila (row) para distribución de columnas */
 .row {
-  display: flex; /* Cambiado de float a flexbox para flexibilidad */
-  flex-wrap: wrap; /* Permite que las columnas se acomoden en varias filas */
-  gap: 10px; /* Espacio entre columnas */
-  padding: 0 10px; /* Espaciado adicional */
+  display: flex;
+  flex-wrap: wrap; /* Permite que las columnas se ajusten automáticamente */
+  gap: 20px; /* Espacio entre columnas */
+  justify-content: space-between; /* Espacio entre las columnas */
+  padding: 0 10px;
 }
 
-/* Crea cuatro columnas iguales que floten una al lado de la otra. */
+/* Columnas de igual tamaño con flexbox */
 .column {
-  flex: 1 1 22%; /* Distribuye las columnas de forma flexible. Ajusta el tamaño */
-  box-sizing: border-box;
-  min-width: 220px; /* Asegura que no se deformen demasiado en pantallas pequeñas */
+  flex: 1 1 22%; /* Las columnas ocupan el mismo tamaño y se ajustan */
+  box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+  min-width: 220px; /* Evita que las columnas se deformen en pantallas pequeñas */
+  display: flex;
+  flex-direction: column;
 }
 
-/* Content */
+/* Aseguramos que las imágenes dentro de las columnas tengan un tamaño consistente */
+.column img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Mantiene la proporción de la imagen sin distorsionarla */
+  border-radius: 5px;
+}
+
+/* Estilo para el contenido dentro de las columnas */
 .content {
   background-color: rgb(241, 241, 241);
-  padding: 10px;
+  padding: 20px; /* Aseguramos que haya un padding consistente */
   margin-top: 20px;
-  text-align: center; /* Alinea el contenido al centro */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* Hace que el contenedor ocupe toda la altura disponible */
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para un mejor estilo */
 }
 
 /* Estilo de los botones */
@@ -34,9 +54,11 @@
   background-color: black;
   color: white;
   cursor: pointer;
-  display: block;
-  margin: 0 auto;
+  display: inline-block;
+  margin-top: 10px;
   text-align: center;
+  border-radius: 3px; /* Bordes redondeados */
+  width: 100%; /* El botón ocupa todo el ancho del contenedor */
 }
 
 .btn:hover {
@@ -72,4 +94,3 @@
     width: 100%; /* El botón ocupa toda la anchura */
   }
 }
-
