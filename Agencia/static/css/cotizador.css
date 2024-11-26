@@ -22,7 +22,7 @@ body {
 
 .left-column {
     color: black;
-    background-color: white; /* Color de fondo de la columna izquierda */
+    background-color: rgb(243, 243, 243); /* Color de fondo de la columna izquierda */
 }
 .Form{
     font-weight: bold;
@@ -79,6 +79,7 @@ body {
 
 /***********************************/
 
+
 input[type=text], select {
   width: 100%;
   padding: 12px 20px;
@@ -88,16 +89,6 @@ input[type=text], select {
   border-radius: 4px;
   box-sizing: border-box;
 }
-
-input[type=number], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
 
 input[type=submit] {
   width: 100%;
@@ -113,5 +104,36 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: #45a049;
 }
+
+.btnGenerar{
+    width: 100%;
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btnGenerar:hover {
+    background-color: #004603; /* Nuevo color de fondo al pasar el cursor */
+    
+}
+
+.btnGuardarCot{
+    width: 100%;
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btnGuardarCot:hover {
+    background-color: #004603; /* Nuevo color de fondo al pasar el cursor */
+    
+}
+
 
 /********************************************/
