@@ -1,4 +1,6 @@
+import requests
 from django.db import models
+from django.contrib import messages
 from django.contrib.auth.models import AbstractUser
 
 class Usuario(AbstractUser):
@@ -15,18 +17,50 @@ class Usuario(AbstractUser):
     pass
 
 class Vehículo(models.Model):
-    marca = models.CharField(max_length=30)
-    modelo = models.CharField(max_length=30)
-    año = models.CharField(max_length=4)
-    especificaciones = models.CharField(max_length=200)
-    precioLista = models.DecimalField(max_digits=10, decimal_places=2)
-    interesAnual = models.DecimalField(max_digits=10, decimal_places=2, default=0)
-    interesMensual = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    marca = models.CharField(max_length=30, null=False)
+    modelo = models.CharField(max_length=30, null=False)
+    año = models.CharField(max_length=4, null=False)
+    transmision = models.CharField(max_length=1, null=True, blank=True)
+    tipoCombustible = models.CharField(max_length=11, null=True, blank=True)
+    traccion = models.CharField(max_length=3, null=True, blank=True)
+    cilindros = models.IntegerField(null=True, blank=True)
+    precioLista = models.DecimalField(max_digits=10, decimal_places=2, null=False)
+    interesAnual = models.DecimalField(max_digits=10, decimal_places=2, default=0, null=True)
+    interesMensual = models.DecimalField(max_digits=10, decimal_places=2, default=0, null=True)
     fotoLateral = models.ImageField(default='acura.png', upload_to='autosTresCuartos/') 
 
     def save(self, *args, **kwargs):
         self.interesAnual = (self.precioLista*8)/100
         self.interesMensual = self.interesAnual/12
+        if not self.transmision:
+            url = "https://api.api-ninjas.com/v1/cars"
+            headers = {"X-Api-Key": "rinSB3ooRmJU9D2zt70Nww==oARMQxF6jZwoGlGs"}
+            params = {
+                "make": self.marca,
+                "model": self.modelo,
+                "year": self.año
+            }
+            try:
+                response = requests.get(url, headers=headers, params=params)
+                if response.status_code == 200:
+                    data = response.json()
+                    if data:
+                        self.transmision = data[0].get("transmission")
+                        self.tipoCombustible = data[0].get("fuel_type")
+                        self.traccion = data[0].get("drive")
+                        self.cilindros = data[0].get("cylinders")
+                    else:
+                        print(f"No se encontró información en la API para {self.marca} {self.modelo} {self.año}.")
+                        self.transmision = "X"
+                        self.tipoCombustible = "X"
+                        self.traccion = "X"
+                        self.cilindros = "X"
+                else:
+                    print(f"Error al consultar la API: {response.status_code}")
+            except requests.RequestException as e:
+                print(f"Error al realizar la solicitud a la API: {e}")
+        else:
+            print("Algunos valores ya definidos, por favor bórrelos si desea consultar la API")
         super(Vehículo, self).save(*args, **kwargs)
 
     def __str__(self):
