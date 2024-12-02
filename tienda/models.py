@@ -63,6 +63,31 @@ class Vehículo(models.Model):
             print("Algunos valores ya definidos, por favor bórrelos si desea consultar la API")
         super(Vehículo, self).save(*args, **kwargs)
 
+    def getTransmision(self):
+        if self.transmision == "a":
+            return "Automática"
+        elif self.transmision == "m":
+            return "Manual"
+        return ""
+    
+    def getTipoCombustible(self):
+        if self.tipoCombustible == "gas":
+            return "Gasolina"
+        elif self.tipoCombustible == "diesel":
+            return "Diesel"
+        elif self.tipoCombustible == "electricity":
+            return "Eléctrico"
+        return ""
+    
+    def getTraccion(self):
+        if self.traccion == "fwd":
+            return "Delantera"
+        elif self.traccion == "rwd":
+            return "Trasera"
+        elif self.traccion == "4wd":
+            return "4x4"
+        return ""
+
     def __str__(self):
         return self.marca + ' - ' + self.modelo
 
