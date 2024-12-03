@@ -20,9 +20,26 @@ class Vehículo(models.Model):
     marca = models.CharField(max_length=30, null=False)
     modelo = models.CharField(max_length=30, null=False)
     año = models.CharField(max_length=4, null=False)
-    transmision = models.CharField(max_length=1, null=True, blank=True)
-    tipoCombustible = models.CharField(max_length=11, null=True, blank=True)
-    traccion = models.CharField(max_length=3, null=True, blank=True)
+    tipoTransmision = (
+        ('a','Automático'),
+        ('m','Manual'),
+        ('','Sin definir')
+    )
+    transmision = models.CharField(max_length=1, null=True, blank=True, choices=tipoTransmision, default='')
+    tipoCombustible = (
+        ('gas','Gasolina'),
+        ('diesel','Diesel'),
+        ('electricity','Eléctrico'),
+        ('','Sin definir')
+    )
+    combustible = models.CharField(max_length=11, null=True, blank=True, choices=tipoCombustible, default='')
+    tipoTraccion = (
+        ('fwd','Delantera'),
+        ('rwd','Trasera'),
+        ('4wd','4x4'),
+        ('','Sin definir')
+    )
+    traccion = models.CharField(max_length=3, null=True, blank=True, choices=tipoTraccion, default='')
     cilindros = models.IntegerField(null=True, blank=True)
     precioLista = models.DecimalField(max_digits=10, decimal_places=2, null=False)
     interesAnual = models.DecimalField(max_digits=10, decimal_places=2, default=0, null=True)
@@ -46,13 +63,13 @@ class Vehículo(models.Model):
                     data = response.json()
                     if data:
                         self.transmision = data[0].get("transmission")
-                        self.tipoCombustible = data[0].get("fuel_type")
+                        self.combustible = data[0].get("fuel_type")
                         self.traccion = data[0].get("drive")
                         self.cilindros = data[0].get("cylinders")
                     else:
                         print(f"No se encontró información en la API para {self.marca} {self.modelo} {self.año}.")
                         self.transmision = "X"
-                        self.tipoCombustible = "X"
+                        self.combustible = "X"
                         self.traccion = "X"
                         self.cilindros = "X"
                 else:

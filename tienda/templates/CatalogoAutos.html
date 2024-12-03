@@ -31,7 +31,6 @@
             <img src="{{ vehículo.fotoLateral.url }}" style="width: 100%">
             <h4>{{ vehículo.marca }} {{ vehículo.modelo }} {{ vehículo.año }}</h4>
             <p><b>Precio:</b> ${{ vehículo.precioLista }}</p>
-            <p><b>Año:</b> {{ vehículo.año }}</p>
             {% if vehículo.getTransmision != "" %}
             <p><b>Transmision:</b> {{ vehículo.getTransmision }}</p>
             {% endif %}
