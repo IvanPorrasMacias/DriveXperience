@@ -68,10 +68,6 @@ class Vehículo(models.Model):
                         self.cilindros = data[0].get("cylinders")
                     else:
                         print(f"No se encontró información en la API para {self.marca} {self.modelo} {self.año}.")
-                        self.transmision = "X"
-                        self.combustible = "X"
-                        self.traccion = "X"
-                        self.cilindros = "X"
                 else:
                     print(f"Error al consultar la API: {response.status_code}")
             except requests.RequestException as e:
