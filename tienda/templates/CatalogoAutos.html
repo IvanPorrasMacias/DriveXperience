@@ -29,19 +29,19 @@
         <div class="column">
           <div class="content">
             <img src="{{ vehículo.fotoLateral.url }}" style="width: 100%">
-            <h4>{{ vehículo.marca }} {{ vehículo.modelo }} {{ vehículo.año }}</h4>
-            <p><b>Precio:</b> ${{ vehículo.precioLista }}</p>
+            <h4 style="margin-bottom: 0;">{{ vehículo.marca }} {{ vehículo.modelo }} {{ vehículo.año }}</h4>
+            <p style="margin-bottom: 0;"><b>Precio:</b> ${{ vehículo.precioLista }}</p>
             {% if vehículo.getTransmision != "" %}
-            <p><b>Transmision:</b> {{ vehículo.getTransmision }}</p>
+            <p style="margin-bottom: 0;"><b>Transmision:</b> {{ vehículo.getTransmision }}</p>
             {% endif %}
             {% if vehículo.getTipoCombustible != "" %}
-            <p><b>Tipo Combustible:</b> {{ vehículo.getTipoCombustible }}</p>
+            <p style="margin-bottom: 0;"><b>Tipo Combustible:</b> {{ vehículo.getTipoCombustible }}</p>
             {% endif %}
             {% if vehículo.getTraccion != "" %}
-            <p><b>Tracción:</b> {{ vehículo.getTraccion }}</p>
+            <p style="margin-bottom: 0;"><b>Tracción:</b> {{ vehículo.getTraccion }}</p>
             {% endif %}
             {% if vehículo.cilindros != NULL %}
-            <p><b>Cilindros:</b> {{ vehículo.cilindros }}</p>
+            <p style="margin-bottom: 0;"><b>Cilindros:</b> {{ vehículo.cilindros }}</p>
             {% endif %}
             <a href="{% url 'cotizador' vehículo.id %}" class="btn">Adquirir</a>
           </div>

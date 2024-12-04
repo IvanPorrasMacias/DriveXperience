@@ -26,7 +26,7 @@
     {% endif %}
   </nav>
   <section>
-    <div class="main-image"></div>
+    <img src="{% static 'image/img-principal.jpg' %}" style="width: 100%;" alt="">
       <div class="row">
         <div class="container">
           {% load static %}
@@ -68,9 +68,10 @@
           vigentes.
         </p>
       </div>
-      <div class="img-index-midle"></div>
-      <br /><br />
-      <div class="container-schedule">
+      <br>
+      <img src="{% static 'image/img-index-medio.jpg' %}" style="width: 100%;" alt="">
+      <br /><br />      
+      <div class="container-schedule" style="background-image: url(static/image/img-horario.jpg); width: 100%; height: auto;">
         <div class="schedule">
           <h2>¡ESTAMOS LISTOS PARA RECIBIRTE!</h2>
           <table>
@@ -145,6 +146,7 @@
     </p>
   </footer>
 
-</body>
+  
 
+</body>
 </html>
