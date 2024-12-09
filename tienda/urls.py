@@ -20,7 +20,6 @@ urlpatterns = [
     path('catalogo/', views.CatalogoView, name='catalogo'),
     path('accounts/', include(django.contrib.auth.urls)),
     path('logout/', views.exit, name='exit'),
-    #path('registro2/',views.Registro2View, name='registro2'),
     path('guardar_cotizacion/', views.guardar_cotizacion, name='guardar_cotizacion'),
     path('borrar-plan/<int:plan_id>/', views.borrar_plan, name='borrar_plan'),
     path('panelUsuario/', views.PanelUsuarioView, name='panelUsuario'),

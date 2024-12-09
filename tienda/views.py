@@ -11,7 +11,7 @@ from django.contrib import messages
 
 from .models import Plan, Usuario, Vehículo
 from .serializers import UsuarioSerializer,VehículoSerializer
-from .forms import CustomUserAuthenticationForm, CustomUserRegistrationForm
+from .forms import CustomUserRegistrationForm
 
 class UsuarioViewSet(viewsets.ModelViewSet):
     queryset = Usuario.objects.all()
@@ -51,16 +51,15 @@ def RegistroView(request):
         data['form'] = user_creation_form 
     return render(request, 'registration/register.html', data)
 
+@login_required
+def CatalogoView(request):
+    vehículos = Vehículo.objects.all()
+    return render(request, 'CatalogoAutos.html', {'vehículos': vehículos})
 
 @login_required
 def CotizadorView(request, vehículoId):
     vehículo = get_object_or_404(Vehículo, id=vehículoId)
     return render(request, 'cotizador.html', {'vehículo': vehículo})
-
-@login_required
-def CatalogoView(request):
-    vehículos = Vehículo.objects.all()
-    return render(request, 'CatalogoAutos.html', {'vehículos': vehículos})
 
 @login_required
 def PanelUsuarioView(request):
@@ -69,17 +68,10 @@ def PanelUsuarioView(request):
     return render(request, "panelUsuario.html", {'planes': planes})
 
 def borrar_plan(request, plan_id):
-    plan = get_object_or_404(Plan, id=plan_id, usuario=request.user)  # Asegurarte de que el plan pertenezca al usuario
+    plan = get_object_or_404(Plan, id=plan_id, usuario=request.user)
     plan.delete()
     messages.success(request, "El plan se ha eliminado correctamente.")
     return redirect('panelUsuario')
-
-def exit(request):
-    logout(request)
-    return redirect('indexCar')
-
-# def Registro2View(request):
-#     return render(request,'registration/register2.html')
 
 def guardar_cotizacion(request):
     if request.method == 'POST' and request.user.is_authenticated:
@@ -111,3 +103,7 @@ def guardar_cotizacion(request):
         except Exception as e:
             return JsonResponse({"success": False, "error": str(e)})
     return JsonResponse({"success": False, "message": "Método no permitido o usuario no autenticado."})
+
+def exit(request):
+    logout(request)
+    return redirect('indexCar')
